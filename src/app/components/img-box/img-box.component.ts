@@ -11,6 +11,10 @@ export class ImgBoxComponent implements OnInit {
   loadedUrl;
   placeholder = '/assets/img/gc-placeholder.jpg';
 
+  constructor() {
+    this.loadedUrl = this.placeholder;
+  }
+
   ngOnInit(): void {
     if (!this.url) {
       this.url = this.placeholder;

@@ -23,6 +23,7 @@ export class WatchlistPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.watchlist = [];
     this.user = this.authenticationService.theUserValue;
     this.getData();
   }
