@@ -1,5 +1,13 @@
+.gc-content-area {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .gc-container {
-  margin: 0 auto;
+  margin: 0 auto 2rem auto;
+  flex: 1 0 auto;
+  min-height: auto;
 }
 
 @media (min-width:768px) {

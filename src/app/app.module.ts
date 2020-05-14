@@ -37,6 +37,7 @@ import { ForgotFormComponent } from './components/forgot-form/forgot-form.compon
 import { AccountDeleteComponent } from './components/account-delete/account-delete.component';
 import { UnsubscribePageComponent } from './pages/unsubscribe-page/unsubscribe-page.component';
 import { ValidatePageComponent } from './pages/validate-page/validate-page.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { ValidatePageComponent } from './pages/validate-page/validate-page.compo
     AccountDeleteComponent,
     UnsubscribePageComponent,
     ValidatePageComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,29 @@
+.gc-footer-wrapper {
+  width: 100%;
+  background: hsla(0, 0%, 0%, 0.1);
+}
+
+.gc-footer {
+  padding: 1rem;
+  font-size: 0.5rem;
+  line-height: 0.7rem;
+}
+
+@media (min-width:768px) {
+  .gc-footer {
+    width: calc(750px - 2.4rem);
+  }
+}
+
+@media (min-width:992px) {
+  .gc-footer {
+    width: calc(970px - 2.4rem);
+  }
+}
+
+@media (min-width:1200px) {
+  .gc-footer {
+    width: calc(1170px - 2.4rem);
+  }
+}
+
