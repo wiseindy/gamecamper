@@ -68,7 +68,7 @@ export class WatchlistFormComponent implements OnInit {
     this.updateBtnState = ClrLoadingState.LOADING;
 
     const watchlist: UpdateWatchlist = {
-      watchPrice: this.watchlistForm.controls.watchPrice.value
+      watchPrice: parseFloat(this.watchlistForm.controls.watchPrice.value)
     };
 
     this.watchlistService.update(this.watchlistItem._id, watchlist).subscribe(
