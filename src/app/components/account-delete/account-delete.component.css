@@ -1,0 +1,12 @@
+.gc-danger-text {
+  color: var(--clr-btn-danger-bg-color);
+}
+
+.gc-danger-text:hover {
+  color: var(--clr-btn-danger-bg-color);
+  background: hsla(0, 0%, 100%, 0.1);
+}
+
+.gc-delete-button {
+  border: 0;
+}

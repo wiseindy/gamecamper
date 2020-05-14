@@ -1,0 +1,50 @@
+<app-error-message *ngIf="success" [text]="'Account updated successfully'" [type]="'success'" [canClose]="true">
+</app-error-message>
+
+<form clrForm [formGroup]="accountForm" (ngSubmit)="update()">
+  <div class="card">
+    <div class="card-block">
+      <div class="card-title">
+        Manage account
+      </div>
+      <div class="card-text">
+        <div class="flex flex-column gc-credentials-wrapper">
+          <clr-input-container>
+            <input type="text" class="clr-col-md-12" clrInput formControlName="name" placeholder="Display name" />
+            <clr-control-error>Invalid display name</clr-control-error>
+          </clr-input-container>
+          <clr-input-container>
+            <input type="email" class="clr-col-md-12" clrInput formControlName="email" placeholder="Email" />
+            <clr-control-error>Invalid Email</clr-control-error>
+          </clr-input-container>
+          <clr-input-container>
+            <input type="password" class="clr-col-md-12" clrInput formControlName="password"
+              placeholder="New password" />
+            <clr-control-error>Invalid password (6 characters min)</clr-control-error>
+          </clr-input-container>
+          <clr-input-container>
+            <input type="password" class="clr-col-md-12" clrInput formControlName="confirm"
+              placeholder="Confirm password" />
+            <clr-control-error>Both passwords must match</clr-control-error>
+          </clr-input-container>
+          <clr-checkbox-container>
+            <clr-checkbox-wrapper>
+              <input type="checkbox" clrCheckbox value="true" formControlName="allowEmails" />
+              <label>Receive emails from Gamecamper</label>
+            </clr-checkbox-wrapper>
+          </clr-checkbox-container>
+          
+          <app-error-message *ngIf="!accountForm.controls.allowEmails.value" type="primary"
+            text="Disabling emails will also disable price drop alerts, however, you'll still receive emails about your account.">
+          </app-error-message>
+          
+        </div>
+      </div>
+    </div>
+    <div class="card-footer gc-update-button-wrapper">
+      <button [clrLoading]="updateBtnState" class="btn btn-primary btn-block">
+        Update
+      </button>
+    </div>
+  </div>
+</form>

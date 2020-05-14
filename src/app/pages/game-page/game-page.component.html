@@ -1,0 +1,16 @@
+<app-page-title titleText=""></app-page-title>
+
+<div class="gc-back-button">
+  <button (click)="goBack()" type="button" class="btn btn-icon" aria-label="back">
+    <fa-icon class="p-1" [icon]="faChevronLeft"></fa-icon>
+  </button>
+</div>
+<app-page-spinner text="Fetching game details..." *ngIf="loading"></app-page-spinner>
+<app-game *ngIf="game" [game]="game"></app-game>
+
+<app-error-message *ngIf="!game && !loading && !error" [text]="'Game not found'" [type]="'warning'">
+</app-error-message>
+
+<div *ngIf="!loading && error">
+  <app-retry (click)="getData()"></app-retry>
+</div>

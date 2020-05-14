@@ -1,0 +1,45 @@
+<clr-header class="header-1">
+  <div class="branding">
+    <a href="#" routerlink="" class="logo-and-title">
+      <span class="clr-icon gc-logo"></span>
+      <span class="title">Gamecamper</span>
+    </a>
+  </div>
+  <div class="divider"></div>
+  <div class="header-nav" [clr-nav-level]="1">
+    <a href="#" class="nav-link nav-text" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"
+      routerLink="">Home</a>
+    <a href="#" class="nav-link nav-text" routerLinkActive="nav-active" routerLink="/free">Free Games</a>
+    <a href="#" class="nav-link nav-text" routerLinkActive="nav-active" routerLink="/watchlist">My Watchlist</a>
+  </div>
+  <div class="header-actions">
+    <a *ngIf="!user" href="#" class="nav-link nav-text" routerLinkActive="nav-active" routerLink="/login">Login</a>
+    <a *ngIf="!user" href="#" class="nav-link nav-text" routerLinkActive="nav-active"
+      routerLink="/register">Register</a>
+    <clr-dropdown *ngIf="user">
+      <button class="nav-text" title="{{user.name}}" clrDropdownTrigger aria-label="open user profile">
+        <div class="flex flex-row align-items-center">
+          <fa-icon [icon]="faUserCircle"></fa-icon>
+          <div class="px-1 gc-logged-in-user-name text-ellipsis">{{user.name}}</div>
+          <clr-icon shape="caret down"></clr-icon>
+        </div>
+      </button>
+      <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+        <div class="gc-logged-in-text text-ellipsis" title="{{user.name}}">
+          Logged in as {{user.name}}
+        </div>
+        <a href="#" routerLink="/account" clrDropdownItem>
+          My Account
+        </a>
+        <a href="#" class="gc-logout" (click)="logout()" clrDropdownItem>
+          <fa-icon [icon]="faSignOutAlt"></fa-icon>
+          Log out
+        </a>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+</clr-header>
+
+<ng-container *ngIf="user">
+  <app-email-alert *ngIf="!user.emailVerified"></app-email-alert>
+</ng-container>

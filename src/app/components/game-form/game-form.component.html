@@ -1,0 +1,12 @@
+<form clrForm clrLayout="vertical" [formGroup]="watchlistForm" (ngSubmit)="addToWatchlist()">
+  <div class="flex flex-column">
+    <clr-input-container class="m-0 p-0">
+      <input class="m-0 p-0 mr-2 text-right" type="text" clrInput formControlName="watchPrice"
+        placeholder="{{game.stores[0].price.simple}}" />
+    </clr-input-container>
+    <div class="mt-2 mr-2 text-right">
+      <button type="button" class="btn btn-outline-primary" (click)="done.emit()">Cancel</button>
+      <button type="submit" class="btn btn-primary" [clrLoading]="addBtnState">Add Game</button>
+    </div>
+  </div>
+</form>

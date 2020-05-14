@@ -1,0 +1,40 @@
+.gc-logo {
+  background: url(/assets/img/logo.png) no-repeat;
+  background-size: cover;
+}
+
+a.nav-link:hover {
+  opacity: 1 !important;
+}
+
+.nav-active {
+  opacity: 1 !important;
+  background: hsla(0, 0%, 100%, 0.15);
+  border-bottom: 2px solid hsl(24, 100%, 60%);
+}
+
+.gc-nav-register-button {
+  background-color: hsl(32, 100%, 20%);
+  opacity: 1 !important;
+}
+
+.gc-nav-register-button-active {
+  background-color: hsl(32, 100%, 35%);
+  opacity: 1 !important;
+}
+
+.gc-nav-register-button:hover {
+  background-color:hsl(32, 100%, 30%) !important;
+}
+
+.gc-logged-in-user-name {
+  max-width: 5rem;
+}
+
+.gc-logged-in-text {
+  padding: .15rem 1.2rem;
+}
+
+.gc-logout {
+  color: var(--clr-btn-danger-bg-color);
+}

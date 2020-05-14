@@ -1,0 +1,21 @@
+.gc-container {
+  margin: 0 auto;
+}
+
+@media (min-width:768px) {
+  .gc-container {
+    width: calc(750px - 2.4rem);
+  }
+}
+
+@media (min-width:992px) {
+  .gc-container {
+    width: calc(970px - 2.4rem);
+  }
+}
+
+@media (min-width:1200px) {
+  .gc-container {
+    width: calc(1170px - 2.4rem);
+  }
+}

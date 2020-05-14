@@ -1,0 +1,39 @@
+<form clrForm [formGroup]="registerForm" (ngSubmit)="register()">
+  <div class="card">
+    <div class="card-block">
+      <div class="card-title">
+        Create an account
+      </div>
+      <div class="card-text">
+        <div class="flex flex-column gc-credentials-wrapper">
+          <clr-input-container>
+            <input type="text" class="clr-col-md-12" clrInput formControlName="name" placeholder="Display name" />
+            <clr-control-error>Invalid display name</clr-control-error>
+          </clr-input-container>
+          <clr-input-container>
+            <input type="email" class="clr-col-md-12" clrInput formControlName="email" placeholder="Email" />
+            <clr-control-error>Invalid Email</clr-control-error>
+          </clr-input-container>
+          <clr-input-container>
+            <input type="password" autocomplete="off" class="clr-col-md-12" clrInput formControlName="password" placeholder="Password" />
+            <clr-control-error>Invalid password (6 characters min)</clr-control-error>
+          </clr-input-container>
+          <clr-input-container>
+            <input type="password" autocomplete="off" class="clr-col-md-12" clrInput formControlName="confirm"
+              placeholder="Confirm password" />
+            <clr-control-error>Both passwords must match</clr-control-error>
+          </clr-input-container>
+          <clr-input-container>
+            <input type="text" autocomplete="off" class="clr-col-md-12" clrInput formControlName="c" placeholder="What is {{a}} + {{b}}" />
+            <clr-control-error>Invalid value</clr-control-error>
+          </clr-input-container>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer gc-register-button-wrapper">
+      <button [clrLoading]="registerBtnState" class="btn btn-primary btn-block">
+        Sign up
+      </button>
+    </div>
+  </div>
+</form>

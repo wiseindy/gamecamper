@@ -1,0 +1,103 @@
+<div class="clr-row mb-4">
+  <div class="clr-col-12">
+    <div class="card">
+
+      <div class="clr-row gc-game-content-wrapper">
+        <div class="clr-col-lg-5 clr-col-12 gc-game-image-wrapper">
+          <app-img-box [url]="imgUrl"></app-img-box>
+        </div>
+        <div class="flex flex-column gc-info-wrapper">
+          <div class="gc-info flex flex-column justify-content-evenly">
+            <div class="my-3 my-sm-0">
+              <div>GAME</div>
+              <div class="gc-text text-ellipsis" title="{{game.name}}">{{game.name}}</div>
+            </div>
+            <div class="mb-3 mb-sm-0">
+              <div>LOWEST PRICE</div>
+              <div class="gc-text text-ellipsis">
+                <span>{{game.stores[0].price.value}}</span>&nbsp;
+                <span class="label label-info">{{game.stores[0].store.name}}</span>
+                <span *ngIf="game.bundle || game.package" class="label label-blue">Bundle</span>
+                <span *ngIf="game.dlc" class="label label-orange">DLC</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="clr-row gc-btn-buy p-0 m-0">
+              <div class="clr-col-sm-6 p-0 m-0">
+                <button class="btn btn-success">Buy Now</button>
+              </div>
+              <div class="clr-col-sm-6 p-0 m-0">
+                <ng-container *ngIf="user">
+                  <button *ngIf="!hasWatchlist" class="btn btn-success-outline" (click)="watchlistModal = true"
+                    [clrLoading]="watchlistBtnState">
+                    Add to Watchlist
+                  </button>
+                  <button *ngIf="hasWatchlist" class="btn btn-success-outline" [clrLoading]="watchlistBtnState"
+                    routerLink="/watchlist" fragment="{{game.id}}">
+                    View in Watchlist
+                  </button>
+                </ng-container>
+                <ng-container *ngIf="!user">
+                  <button class="btn btn-success-outline" routerLink="/login"
+                    [queryParams]="{returnUrl: '/game/' + game.id}" title="Add to Watchlist">
+                    Add to Watchlist
+                  </button>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="clr-row">
+      <div class="clr-col-12">
+        <div class="card">
+          <div class="card-header">
+            Other Stores
+          </div>
+          <div class="card-block" *ngFor="let store of game.stores">
+            <div class="clr-row">
+              <div class="clr-col-6 clr-col-sm-4 flex flex-row justify-content-center align-items-center">
+                <div class="gc-store-name flex justify-content-center align-items-center">
+                  {{store.store.name}}
+                </div>
+              </div>
+              <div class="clr-col-6 clr-col-sm-4 my-2 my-sm-0 flex flex-row justify-content-center align-items-center">
+                <div class="gc-store-price">
+                  {{store.price.value}}
+                </div>
+              </div>
+              <div class="clr-col-12 clr-col-sm-4 my-2 my-sm-0 text-sm-center">
+                <button class="btn btn-block btn-outline-primary">
+                  <fa-icon [icon]="faExternalLinkAlt"></fa-icon>
+                  &nbsp;Visit store
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<clr-modal [(clrModalOpen)]="watchlistModal" [clrModalSize]="'sm'">
+  <h3 class="modal-title">Create price watch</h3>
+  <div class="modal-body">
+    <p class="my-1">
+      Set a <strong>price drop alert</strong> and get notified whenever the game drops to this price.
+    </p>
+    <app-game-form [game]="game" (done)="watchlistModal = false"></app-game-form>
+  </div>
+</clr-modal>
+
+<!-- <img src="https://steamcdn-a.akamaihd.net/steam/apps/{{game.steamId}}/header.jpg"> -->
+<!-- https://steamcdn-a.akamaihd.net/steam/apps/312560/capsule_616x353.jpg -->
+<!-- Background -->
+<!-- https://steamcdn-a.akamaihd.net/steam/apps/261550/page_bg_generated_v6b.jpg -->
+<!-- https://steamcdn-a.akamaihd.net/steam/apps/261550/page_bg_generated_v6.jpg -->
+<!-- Image by <a href="https://pixabay.com/users/TheDigitalArtist-202249/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3400789">Pete Linforth</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3400789">Pixabay</a> -->

@@ -1,0 +1,43 @@
+<div class="gc-search-bar-wrapper">
+  <clr-input-container>
+    <!-- <input class="clr-col-md-12" clrInput type="text" placeholder="Search for a game"
+      (keyup)="searchText$.next($event.target.value)" (keydown)="keyDown($event)" autoComplete="off" autofocus /> -->
+    <input class="clr-col-md-12" clrInput type="text" placeholder="Search for a game"
+      (keyup)="search($event.target.value)" autoComplete="off" autofocus />
+
+  </clr-input-container>
+
+  <div class="dropdown open gc-search-autocomplete" *ngIf="searchGames || loading">
+
+    <div class="dropdown-menu">
+      <div class="dropdown-item gc-searching">
+        <span class="spinner spinner-sm spinner-inverse">
+          Searching...
+        </span>
+        <span class="ml-2">
+          Searching...
+        </span>
+      </div>
+    </div>
+
+    <ng-container *ngIf="searchGames">
+      <div class="dropdown-menu">
+        <div class="dropdown-item" *ngIf="!searchGames.length">
+          No games found
+        </div>
+        <ng-container *ngFor="let game of searchGames; let i = index">
+          <!-- <div class="dropdown-item" [class.active]="i == arrowkeyLocation" routerLink="/game/{{game.id}}">
+            <span title="{{game.name}}" routerLinkActive="active">{{game.name}}</span>
+          </div> -->
+          <div class="dropdown-item" routerLink="/game/{{game.id}}">
+            <span title="{{game.name}}" routerLinkActive="active">{{game.name}}</span>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+
+  </div>
+
+</div>
+
+<app-error-message *ngIf="error" [text]="'Unable to connect to server'" [type]="'danger'"></app-error-message>

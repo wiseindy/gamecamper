@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="clr-col-12 text-center pt-2">
+    <button class="btn btn-link gc-danger-text" (click)="deleteConfirmationModal = true">Delete account</button>
+  </div>
+</div>
+
+<clr-modal [(clrModalOpen)]="deleteConfirmationModal" [clrModalSize]="'md'">
+  <h3 class="modal-title">Are you sure?</h3>
+  <div class="modal-body">
+    <p class="my-1 gc-danger-text">Do you want to delete your account? <strong>This action is irreversible.</strong></p>
+    <p class="my-1">If you really want to delete your account, type <strong class="gc-danger-text">DELETE</strong>
+      (uppercase) in the field below and hit the Delete button.</p>
+  </div>
+  <div class="modal-footer">
+    <form clrForm clrLayout="vertical" [formGroup]="deleteForm" (ngSubmit)="deleteAccount()"
+      class="flex flex-row flex-wrap align-items-center justify-content-right m-0 p-0">
+      <clr-input-container class="m-0 p-0">
+        <input type="text" clrInput formControlName="deleteText" placeholder="Type DELETE" class="m-0 p-0 mr-2" />
+      </clr-input-container>
+      <div class="flex flex-row mt-2 mt-sm-0">
+        <button [disabled]="deleteForm.invalid" type="submit" ng class="btn btn-danger m-0"
+          [clrLoading]="deleteBtnState">Delete</button>
+        <button type="button" class="btn btn-primary" (click)="deleteConfirmationModal = false">Cancel</button>
+      </div>
+    </form>
+  </div>
+</clr-modal>

@@ -1,0 +1,29 @@
+<app-page-title titleText="My Watchlist"></app-page-title>
+
+<app-error-message *ngIf="!user.allowEmails" type="primary"
+  text="Emails from Gamecamper are disabled. To received price drop alerts, got to your account settings and enable them.">
+</app-error-message>
+
+<app-page-spinner text="Fetching watchlist..." *ngIf="loading"></app-page-spinner>
+
+<div class="clr-row" *ngIf="!loading && !error">
+  <div class="clr-col-12">
+    <div class="card">
+      <ng-container *ngIf="watchlist.length > 0">
+        <ng-container *ngFor="let single of watchlist">
+          <app-watchlist [watchlistItem]="single">
+          </app-watchlist>
+        </ng-container>
+      </ng-container>
+      <div class="px-4 pb-3" *ngIf="watchlist.length < 1">
+        <p>You have no items in your watchlist.</p>
+        <p>To get notified for any price drops, <button class="btn btn-link" href="#" routerLink="/">search for a
+            game</button> and add it to your watchlist</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!loading && error">
+  <app-retry (click)="getData()"></app-retry>
+</div>

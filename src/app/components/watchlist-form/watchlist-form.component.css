@@ -1,0 +1,23 @@
+.gc-delete-button {
+  border: 0;
+}
+
+.gc-update-button {
+  border: 0;
+}
+
+.gc-text-small {
+  font-size: 0.8rem;
+  color: hsl(0, 0%, 100%);
+}
+
+clr-input-container label {
+  display: none;
+}
+
+clr-input-container input {
+  max-width: 3rem;
+  padding: 0;
+  border-bottom-color: hsl(0, 0%, 40%);
+  text-align: center;
+}

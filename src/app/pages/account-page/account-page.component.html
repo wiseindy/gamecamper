@@ -1,0 +1,17 @@
+<app-page-title titleText="My Account"></app-page-title>
+
+<app-page-spinner text="Fetching account details..." *ngIf="loading"></app-page-spinner>
+
+<div *ngIf="!loading && !error" class="clr-row justify-content-center">
+  <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
+
+    <app-account-form [user]="user"></app-account-form>
+
+    <app-account-delete></app-account-delete>
+
+  </div>
+</div>
+
+<div *ngIf="!loading && error">
+  <app-retry (click)="getData()"></app-retry>
+</div>

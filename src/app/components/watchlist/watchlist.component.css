@@ -1,0 +1,108 @@
+.gc-watchlist-content-wrapper {
+  margin: 0;
+}
+
+.gc-watchlist-image-wrapper {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+
+.gc-watchlist-image-wrapper:after {
+  /* 616:353 ratio + 6 */
+  padding-top: 57.305194805%;
+  display: block;
+  content: '';
+}
+
+.card-block {
+  /* padding: .6rem .9rem; */
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  position: relative;
+}
+
+.gc-game-name {
+  max-width: 24rem;
+}
+
+.gc-watchlist-game-wrapper {
+  height: 100%;
+}
+
+.gc-watchlist-game-wrapper a {
+  padding: 0;
+  margin: 0;
+}
+
+.gc-watchlist-game-wrapper h5 {
+  padding: 0;
+  margin: 0;
+}
+
+.gc-label-success {
+  border: 0;
+  color: hsl(121, 100%, 44%);
+}
+
+.gc-label-danger {
+  border: 0;
+  color: hsl(3, 95%, 44%);
+}
+
+.gc-highlight-success {
+  border-bottom: 3px solid hsl(121, 100%, 44%);
+}
+
+.gc-highlight-danger {
+  border-bottom: 3px solid hsl(3, 95%, 44%);
+}
+
+.gc-text {
+  font-size: 1rem;
+  color: hsl(0, 0%, 100%);
+}
+
+.gc-text-difference {
+  font-size: 0.7rem;
+}
+
+.gc-watchlist-buy {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.gc-watchlist-buy-store {
+  font-size: 0.5rem;
+  line-height: 1rem;
+  text-align: center;
+  background-color: hsla(0, 0%, 0%, 0.5);
+  color: hsl(0, 0%, 100%);
+}
+
+.gc-flash {
+  -webkit-animation-name: gc-flash-animation;
+  -webkit-animation-duration: 2s;
+  animation-name: gc-flash-animation;
+  animation-duration: 2s;
+}
+
+@-webkit-keyframes gc-flash-animation {
+  from {
+    background: hsla(0, 0%, 100%, 0.4)
+  }
+  to {
+    background: default;
+  }
+}
+
+@keyframes gc-flash-animation {
+  from {
+    background: hsla(0, 0%, 100%, 0.4);
+  }
+  to {
+    background: default;
+  }
+}

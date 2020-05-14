@@ -1,0 +1,13 @@
+<div class="gc-discount-box-wrapper flex flex-row">
+  <div class="gc-discount-box">
+    {{percentage}}
+  </div>
+  <div class="gc-discount-prices flex flex-column justify-content-center">
+    <div class="gc-price-original">
+      {{priceSymbol}}{{oldPrice.toFixed(2)}}
+    </div>
+    <div class="gc-price-new">
+      {{priceSymbol}}{{newPrice.toFixed(2)}}
+    </div>
+  </div>
+</div>

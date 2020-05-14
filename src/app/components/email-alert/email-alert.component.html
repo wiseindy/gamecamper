@@ -1,0 +1,19 @@
+<clr-alert [clrAlertType]="'danger'" [clrAlertAppLevel]="true" [clrAlertClosable]="false">
+  <clr-alert-item>
+    <span class="alert-text">
+      You'll not be able to receive any price drop notifications until you verify your email address.
+    </span>
+    <div class="alert-actions my-2 my-lg-0">
+      <button class="btn alert-action mr-2" [clrLoading]="resendBtnState"  (click)="resend()">Resend</button>
+      <button class="btn alert-action" routerLink="/account">Change email</button>
+    </div>
+  </clr-alert-item>
+</clr-alert>
+
+<div class="clr-row" *ngIf="success && !loading">
+  <div class="clr-col-3"></div>
+  <div class="clr-col-6">
+    <app-error-message text="Email sent" type="success" [canClose]="true"></app-error-message>
+  </div>
+  <div class="clr-col-3"></div>
+</div>

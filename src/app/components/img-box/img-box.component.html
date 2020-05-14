@@ -1,0 +1,8 @@
+<!-- Preload -->
+<img [src]="url" (load)="loadedUrl = url" (error)="loadError()" hidden>
+<!-- End Preload -->
+
+<div class="flex justify-content-center align-items-center gc-game-image"
+  [style.background-image]="'url(' + loadedUrl + ')'">
+  <div class="spinner spinner-inverse" *ngIf="loadedUrl !== url"></div>
+</div>

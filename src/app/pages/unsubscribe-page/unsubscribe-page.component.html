@@ -1,0 +1,5 @@
+<app-page-title titleText="Unsubscribe"></app-page-title>
+
+<app-page-spinner text="Unsubscribing..." *ngIf="loading"></app-page-spinner>
+
+<app-error-message *ngIf="success" text="You have been successfully unsubscribed" type="success" [canClose]="true"></app-error-message>

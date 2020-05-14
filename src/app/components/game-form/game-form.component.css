@@ -1,0 +1,10 @@
+clr-input-container label {
+  display: none;
+}
+
+clr-input-container input {
+  font-size: 0.8rem;
+  padding: 0;
+  border-bottom-color: hsl(0, 0%, 40%);
+  text-align: center;
+}

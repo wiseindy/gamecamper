@@ -1,0 +1,25 @@
+<app-error-message *ngIf="success" [text]="'If the address is valid, you\'ll receive an email with password reset instructions.'" [type]="'success'" [canClose]="true">
+</app-error-message>
+
+<form clrForm [formGroup]="forgotForm" (ngSubmit)="reset()">
+  <div class="card">
+    <div class="card-block">
+      <div class="card-title">
+        Reset your password
+      </div>
+      <div class="card-text">
+        <div class="flex flex-column gc-credentials-wrapper">
+          <clr-input-container>
+            <input type="email" class="clr-col-md-12" clrInput formControlName="email" placeholder="Email" />
+            <clr-control-error>Invalid Email</clr-control-error>
+          </clr-input-container>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer gc-forgot-button-wrapper">
+      <button [clrLoading]="forgotBtnState" class="btn btn-primary btn-block">
+        Submit
+      </button>
+    </div>
+  </div>
+</form>

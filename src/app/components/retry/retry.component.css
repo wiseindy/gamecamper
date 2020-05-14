@@ -1,0 +1,13 @@
+.gc-retry-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.gc-retry-wrapper:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

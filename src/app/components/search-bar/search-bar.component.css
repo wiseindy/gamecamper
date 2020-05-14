@@ -1,0 +1,30 @@
+.gc-search-bar-wrapper input {
+  width: 100%;
+  height: 2.8rem;
+  max-height: 2.8rem;
+  font-size: 1.2rem;
+  font-weight: lighter;
+  padding: 0.6rem 0.2rem;
+}
+
+.gc-search-bar-wrapper clr-input-container {
+  height: 2.8rem;
+  max-height: 2.8rem;
+}
+
+.gc-search-autocomplete {
+  display: block;
+  margin-left: 0.6rem;
+  margin-right: 0.6rem;
+}
+
+.gc-search-autocomplete .dropdown-menu {
+  border-top: none;
+  max-width: 100%;
+}
+
+.gc-searching {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

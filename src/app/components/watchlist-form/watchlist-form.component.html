@@ -1,0 +1,33 @@
+<ng-container *ngIf="watchlistItem">
+  <div class="flex flex-row align-items-center gc-text-small">
+    <form clrForm clrLayout="vertical" [formGroup]="watchlistForm" (ngSubmit)="updateWatchlist()"
+      class="flex flex-row align-items-center m-0 p-0">
+      <clr-input-container class="m-0 p-0">
+        <input type="text" clrInput formControlName="watchPrice" value="{{watchlistItem.watchPrice.toFixed(2)}}"
+          class="m-0 p-0" />
+      </clr-input-container>
+      &nbsp;&nbsp;
+      <button [clrLoading]="updateBtnState" type="submit" class="btn btn-sm gc-update-button mx-0" title="Update price">
+        <fa-icon [icon]="faSyncAlt"></fa-icon>
+        Update
+      </button>
+    </form>
+    <button  class="btn btn-sm btn-outline-danger gc-delete-button mx-0" title="Remove from watchlist"
+      (click)="confirmDelete()">
+      <fa-icon [icon]="faTimes"></fa-icon>
+      Remove
+    </button>
+  </div>
+
+  <clr-modal [(clrModalOpen)]="confirmationModal" [clrModalSize]="'md'">
+    <h3 class="modal-title">Are you sure?</h3>
+    <div class="modal-body">
+      <p class="my-1">Do you want to remove <strong>{{watchlistItem.name}}</strong> from your watchlist?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-danger gc-delete-button" [clrLoading]="deleteBtnState"
+        (click)="deleteItem()">Delete</button>
+      <button type="button" class="btn btn-primary" (click)="confirmationModal = false">Cancel</button>
+    </div>
+  </clr-modal>
+</ng-container>

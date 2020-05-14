@@ -1,0 +1,29 @@
+<app-error-message *ngIf="warning" [text]="'Please login to view this page'" [type]="'warning'" [canClose]="true">
+</app-error-message>
+
+<form clrForm [formGroup]="loginForm" (ngSubmit)="login()">
+  <div class="card">
+    <div class="card-block">
+      <div class="card-title">
+        Login
+      </div>
+      <div class="card-text">
+        <div class="flex flex-column gc-credentials-wrapper">
+          <clr-input-container>
+            <input type="email" class="clr-col-md-12" clrInput formControlName="email" placeholder="Email" />
+            <clr-control-error>Invalid Email</clr-control-error>
+          </clr-input-container>
+          <clr-input-container>
+            <input type="password" class="clr-col-md-12" clrInput formControlName="password" placeholder="Password" />
+            <clr-control-error>Password is required</clr-control-error>
+          </clr-input-container>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer gc-login-button-wrapper">
+      <button [clrLoading]="loginBtnState" class="btn btn-primary btn-block">
+        Login
+      </button>
+    </div>
+  </div>
+</form>

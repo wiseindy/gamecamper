@@ -1,0 +1,38 @@
+.gc-discount-box-wrapper {
+  font-family: Arial, Helvetica, sans-serif;
+  /* background-color: hsla(213, 38%, 13%, 0.8); */
+  background-color: hsla(0, 0%, 0%, 0.9);
+  position: absolute;
+  z-index: 1;
+  bottom: 0.6rem;
+  right: 0;
+  -webkit-box-shadow: -6px 0px 20px 6px hsla(0, 0%, 0%, 0.5);
+  -moz-box-shadow: -6px 0px 20px 6px hsla(0, 0%, 0%, 0.5);
+  box-shadow: -6px 0px 20px 6px hsla(0, 0%, 0%, 0.5);
+}
+
+.gc-discount-box {
+  color: hsl(73, 93%, 42%);
+  background: hsl(85, 52%, 28%);
+  padding: 0.1em 0.3em;
+  line-height: 34px;
+  padding: 0 5px;
+  font-size: 26px;
+}
+
+.gc-discount-prices {
+  line-height: 13px;
+  padding: 4px 10px 4px 7px;
+}
+
+.gc-price-original {
+  text-decoration: line-through;
+  color: hsl(202, 23%, 55%);
+  font-size: 11px;
+  text-align: right;
+}
+
+.gc-price-new {
+  color: hsl(201, 78%, 82%);
+  font-size: 13px;
+}
