@@ -3,6 +3,7 @@ import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { WatchlistService } from '@gamecamper/_services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from '@environments/environment';
 
 @Component({
   selector: 'app-watchlist',
@@ -12,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class WatchlistComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() watchlistItem;
+  apiEndpoint: string;
   watchlistForm: FormGroup;
   faAngleUp = faAngleUp;
   faAngleDown = faAngleDown;
@@ -22,7 +24,9 @@ export class WatchlistComponent implements OnInit, AfterViewInit, OnChanges {
     protected readonly watchlistService: WatchlistService,
     protected readonly route: ActivatedRoute,
     protected readonly router: Router,
-  ) { }
+  ) {
+    this.apiEndpoint = environment.apiUrl;
+  }
 
   ngOnInit(): void {
 

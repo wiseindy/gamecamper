@@ -25,7 +25,9 @@
           <div>
             <div class="clr-row gc-btn-buy p-0 m-0">
               <div class="clr-col-sm-6 p-0 m-0">
-                <button class="btn btn-success">Buy Now</button>
+                <a target="_blank" href="{{apiEndpoint}}{{game.stores[0].price.link}}">
+                  <button class="btn btn-success">Buy Now</button>
+                </a>
               </div>
               <div class="clr-col-sm-6 p-0 m-0">
                 <ng-container *ngIf="user">
@@ -71,10 +73,12 @@
                 </div>
               </div>
               <div class="clr-col-12 clr-col-sm-4 my-2 my-sm-0 text-sm-center">
-                <button class="btn btn-block btn-outline-primary">
-                  <fa-icon [icon]="faExternalLinkAlt"></fa-icon>
-                  &nbsp;Visit store
-                </button>
+                <a target="_blank" class="gc-store-link" href="{{apiEndpoint}}{{store.price.link}}">
+                  <button class="btn btn-block btn-outline-primary">
+                    <fa-icon [icon]="faExternalLinkAlt"></fa-icon>
+                    &nbsp;Visit store
+                  </button>
+                </a>
               </div>
             </div>
           </div>

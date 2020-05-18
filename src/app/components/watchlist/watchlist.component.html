@@ -72,7 +72,9 @@
               <!-- End Lowest price text -->
 
               <!-- Buy Now Button -->
+
               <div class="clr-col-lg-5 text-right p-0 my-lg-0 my-3" title="{{watchlistItem.stores[0].store.name}}">
+                <a href="{{apiEndpoint}}{{watchlistItem.stores[0].price.link}}" target="_blank">
                 <button class="btn btn-icon btn-success gc-watchlist-buy" title="Buy Now">
                   <div class="px-2">
                     <clr-icon shape="shopping-cart" class="is-solid"></clr-icon>
@@ -82,6 +84,7 @@
                     {{watchlistItem.stores[0].store.name}}
                   </div>
                 </button>
+                </a>
               </div>
               <!-- End Buy Now Button -->
 

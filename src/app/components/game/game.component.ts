@@ -3,6 +3,7 @@ import { WatchlistService, AuthenticationService } from '@gamecamper/_services';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { first } from 'rxjs/operators';
 import { ClrLoadingState } from '@clr/angular';
+import { environment } from '@environments/environment';
 
 @Component({
   selector: 'app-game',
@@ -12,6 +13,7 @@ import { ClrLoadingState } from '@clr/angular';
 export class GameComponent implements OnInit {
 
   @Input() game;
+  apiEndpoint: string;
   hasWatchlist = false;
   imgUrl;
   user;
@@ -22,7 +24,9 @@ export class GameComponent implements OnInit {
   constructor(
     protected readonly watchlistService: WatchlistService,
     protected readonly authenticationService: AuthenticationService,
-  ) { }
+  ) {
+    this.apiEndpoint = environment.apiUrl;
+  }
 
   ngOnInit() {
 
