@@ -9,7 +9,7 @@
 
   <div class="dropdown open gc-search-autocomplete" *ngIf="searchGames || loading">
 
-    <div class="dropdown-menu">
+    <div class="dropdown-menu" *ngIf="loading">
       <div class="dropdown-item gc-searching">
         <span class="spinner spinner-sm spinner-inverse">
           Searching...
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <ng-container *ngIf="searchGames">
+    <ng-container *ngIf="searchGames && !loading">
       <div class="dropdown-menu">
         <div class="dropdown-item" *ngIf="!searchGames.length">
           No games found

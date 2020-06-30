@@ -21,7 +21,7 @@ export class GameService {
       debounceTime(400),
       distinctUntilChanged(),
       switchMap(game => {
-        if (game.length > 0) {
+        if (game.length > 2) {
           try {
             return this._httpGet(`${this.games}/${regionId}/${game}`).pipe(
               catchError(error => {

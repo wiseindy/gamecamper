@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../../_services/game.service';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-search-bar',
@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
 })
 export class SearchBarComponent implements OnInit {
 
-  searchText$ = new Subject<string>();
+  searchText$ = new BehaviorSubject<string>('');
   searchGames: string[];
   arrowkeyLocation = 0;
   loading = false;
@@ -40,9 +40,14 @@ export class SearchBarComponent implements OnInit {
 
   search(query: string) {
     this.error = false;
-    if (query) {
-      this.loading = true;
-      this.searchText$.next(query);
+    if (query && query !== this.searchText$.getValue()) {
+      if (query.length > 2) {
+        this.loading = true;
+        this.searchGames = null;
+        this.searchText$.next(query);
+      }
+    } else if (!query) {
+      this.searchGames = null;
     }
   }
 
