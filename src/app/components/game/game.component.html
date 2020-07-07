@@ -15,7 +15,8 @@
             <div class="mb-3 mb-sm-0">
               <div>LOWEST PRICE</div>
               <div class="gc-text text-ellipsis">
-                <span>{{game.stores[0].price.value}}</span>&nbsp;
+                <span *ngIf="game.lowestValue === 0">FREE&nbsp;</span>
+                <span *ngIf="game.lowestValue !== 0">{{game.stores[0].price.value}}&nbsp;</span>
                 <span class="label label-info">{{game.stores[0].store.name}}</span>
                 <span *ngIf="game.bundle || game.package" class="label label-blue">Bundle</span>
                 <span *ngIf="game.dlc" class="label label-orange">DLC</span>

@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ImgBoxComponent implements OnInit {
 
   @Input() url;
+  @Input() smallSpinner = false;
   loadedUrl;
   placeholder = '/assets/img/gc-placeholder.jpg';
 

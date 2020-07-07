@@ -30,7 +30,13 @@
             <span title="{{game.name}}" routerLinkActive="active">{{game.name}}</span>
           </div> -->
           <div class="dropdown-item" routerLink="/game/{{game.id}}">
-            <span title="{{game.name}}" routerLinkActive="active">{{game.name}}</span>
+            <div class="clr-row justify-content-between">
+              <div title="{{game.name}}" class="clr-col-md-9 text-ellipsis pr-md-4" routerLinkActive="active">{{game.name}}</div>
+              <div title="{{game.lowest}}" class="clr-col-md-3 price-text justify-content-between" routerLinkActive="active">
+                <span>from&nbsp;&nbsp;</span>
+                <span class="price-text-number">{{game.lowest}}</span>
+              </div>
+            </div>
           </div>
         </ng-container>
       </div>

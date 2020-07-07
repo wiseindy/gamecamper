@@ -4,10 +4,18 @@
   height: 100%;
 }
 
-.gc-container {
-  margin: 0 auto 2rem auto;
+.gc-container-wrapper {
+  width: 100%;
   flex: 1 0 auto;
   min-height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gc-container {
+  width: calc(100% - 2.4rem);
+  margin: 0 1rem 2rem 1rem;
 }
 
 @media (min-width:768px) {

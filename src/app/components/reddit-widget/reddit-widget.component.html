@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title flex flex-row justify-content-between">
+      <ng-container *ngIf="headerUrl">
+        <a href="{{headerUrl}}" target="_blank">{{header}}</a>
+      </ng-container>
+      <ng-container *ngIf="!headerUrl">
+        {{header}}
+      </ng-container>
+      <button *ngIf="!more" class="btn btn-sm btn-link mr-0 pr-0" routerLink="/free">View more</button>
+    </h4>
+    <p *ngIf="headerText" class="card-text">
+      {{headerText}}
+    </p>
+  </div>
+  <ul class="list-group">
+    <li *ngIf="loading" class="p-3">
+      <span class="spinner spinner-sm spinner-inverse">
+        Loading...
+      </span>
+    </li>
+    <li *ngFor="let game of games">
+      <app-widget-reddit-row [game]="game"></app-widget-reddit-row>
+    </li>
+  </ul>
+  <div *ngIf="more && headerUrl" class="card-footer">
+    <a class="btn btn-sm btn-link" href="{{headerUrl}}" target="_blank">
+      <fa-icon [icon]="faExternalLinkAlt"></fa-icon>&nbsp;
+      View on reddit
+    </a>
+  </div>
+</div>

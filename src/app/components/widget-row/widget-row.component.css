@@ -1,0 +1,61 @@
+a.gc-row {
+  text-decoration: none;
+  margin: 0;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.06);
+}
+a.gc-row:hover,
+a.gc-row:active {
+  background-color: hsla(0, 0%, 100%, 0.06);
+}
+
+.gc-full-width {
+  width: 100%;
+  overflow: hidden;
+}
+
+.gc-btn {
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  height: 100%;
+  min-width: 0;
+}
+
+.gc-title {
+  font-weight: bold;
+  color: hsl(0, 0%, 80%);
+}
+
+.gc-metadata {
+  font-size: 0.6rem;
+  color: hsl(0, 0%, 60%);
+}
+
+.gc-external-link {
+  font-size: 0.6rem;
+}
+
+.gc-text-platform {
+  color: hsl(0, 0%, 70%);
+}
+
+.gc-free {
+  color: hsl(93, 76%, 49%);
+}
+
+.gc-price {
+  color: hsl(198, 69%, 69%);
+  font-weight: bold;
+}
+
+.gc-game-image-wrapper {
+  width: 180px;
+  display: inline-block;
+  position: relative;
+}
+
+.gc-game-image-wrapper:after {
+  padding-top: 46%;
+  display: block;
+  content: '';
+}

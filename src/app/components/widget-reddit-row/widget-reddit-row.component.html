@@ -1,0 +1,22 @@
+<a class="flex flex-row justify-content-between align-items-center gc-row" href="{{game.link}}" target="_blank">
+  <div class="gc-game-image-wrapper">
+    <app-img-box [url]="game.thumbnail" smallSpinner="true"></app-img-box>
+  </div>
+  <div class="flex flex-column py-1 px-2 gc-full-width">
+    <div title="{{game.title}}" class="gc-title text-ellipsis">
+      {{game.title}}
+    </div>
+    <span *ngIf="game.platform || game.type" class="flex flex-row align-items-center justify-content-between gc-full-width">
+      <div class="gc-metadata text-ellipsis">
+        <span title="Type: {{game.type}}" *ngIf="game.type === 'DLC'">{{game.type}}</span>
+        <span title="Type: {{game.type}}" *ngIf="game.type !== 'DLC'">{{game.type}}</span>
+        <span class="px-1">•</span>
+        <span title="Platform: {{game.platform}}" class="gc-text-platform">{{game.platform}}</span>
+      </div>
+      <a class="flex flex-row gc-external-link" title="View on reddit.com" href="https://reddit.com{{game.reddit.link}}" target="_blank">
+        <fa-icon [icon]="faExternalLinkAlt"></fa-icon>&nbsp;
+        <span>reddit</span>
+      </a>
+    </span>
+  </div>
+</a>

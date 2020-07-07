@@ -38,6 +38,10 @@ import { AccountDeleteComponent } from './components/account-delete/account-dele
 import { UnsubscribePageComponent } from './pages/unsubscribe-page/unsubscribe-page.component';
 import { ValidatePageComponent } from './pages/validate-page/validate-page.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { RedditWidgetComponent } from './components/reddit-widget/reddit-widget.component';
+import { WidgetRowComponent } from './components/widget-row/widget-row.component';
+import { WidgetRedditRowComponent } from './components/widget-reddit-row/widget-reddit-row.component';
+import { DealsWidgetComponent } from './components/deals-widget/deals-widget.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +76,10 @@ import { FooterComponent } from './components/footer/footer.component';
     UnsubscribePageComponent,
     ValidatePageComponent,
     FooterComponent,
+    RedditWidgetComponent,
+    WidgetRowComponent,
+    WidgetRedditRowComponent,
+    DealsWidgetComponent,
   ],
   imports: [
     BrowserModule,

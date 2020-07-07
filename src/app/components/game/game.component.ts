@@ -36,7 +36,8 @@ export class GameComponent implements OnInit {
 
     if (this.game.steamId) {
       if (!this.game.bundle && !this.game.package) {
-        this.imgUrl = 'https://steamcdn-a.akamaihd.net/steam/apps/' + this.game.steamId + '/capsule_616x353.jpg';
+        // this.imgUrl = 'https://steamcdn-a.akamaihd.net/steam/apps/' + this.game.steamId + '/capsule_616x353.jpg';
+        this.imgUrl = 'https://steamcdn-a.akamaihd.net/steam/apps/' + this.game.steamId + '/header.jpg';
       }
     }
 

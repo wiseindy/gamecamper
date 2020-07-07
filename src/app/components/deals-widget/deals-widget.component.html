@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title">
+      {{header}}
+    </h4>
+    <p *ngIf="headerText" class="card-text">
+      {{headerText}}
+    </p>
+  </div>
+  <ul class="list-group">
+    <li *ngIf="loading" class="p-3">
+      <span class="spinner spinner-sm spinner-inverse">
+        Loading...
+      </span>
+    </li>
+    <li *ngFor="let game of games">
+      <app-widget-row [game]="game"></app-widget-row>
+    </li>
+  </ul>
+</div>

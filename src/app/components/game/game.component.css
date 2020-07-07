@@ -10,7 +10,9 @@
 
 .gc-game-image-wrapper:after {
   /* 616:353 ratio + 6 */
-  padding-top: 57.305194805%;
+  /* padding-top: 57.305194805%; */
+  /* 460:215 ratio + 6 */
+  padding-top: 46.739130434%;
   display: block;
   content: '';
 }
