@@ -25,7 +25,7 @@ export class RedditWidgetComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.error = false;
-    this.freeGamesService.find(this.more).subscribe(
+    this.freeGamesService.findReddit(this.more).subscribe(
       data => {
         this.error = false;
         this.loading = false;

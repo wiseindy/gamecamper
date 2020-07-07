@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DealsService } from '@gamecamper/_services';
+import { DealsService, FreeGamesService } from '@gamecamper/_services';
 
 @Component({
   selector: 'app-deals-widget',
@@ -16,22 +16,37 @@ export class DealsWidgetComponent implements OnInit {
   error = false;
 
   constructor(
-    protected dealsService: DealsService
+    protected dealsService: DealsService,
+    protected freeGamesService: FreeGamesService,
   ) { }
 
   ngOnInit(): void {
     this.loading = true;
     this.error = false;
-    this.dealsService.find('ca', this.type).subscribe(
-      data => {
-        this.error = false;
-        this.loading = false;
-        this.games = data;
-      },
-      error => {
-        this.error = true;
-        this.loading = false;
-      });
+
+    if (this.type === 'exclusive') {
+      this.freeGamesService.find0('ca').subscribe(
+        data => {
+          this.error = false;
+          this.loading = false;
+          this.games = data;
+        },
+        error => {
+          this.error = true;
+          this.loading = false;
+        });
+    } else {
+      this.dealsService.find('ca', this.type).subscribe(
+        data => {
+          this.error = false;
+          this.loading = false;
+          this.games = data;
+        },
+        error => {
+          this.error = true;
+          this.loading = false;
+        });
+    }
   }
 
 }
