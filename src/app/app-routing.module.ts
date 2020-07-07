@@ -11,6 +11,7 @@ import { FreeGamesPageComponent } from './pages/free-games-page/free-games-page.
 import { AuthGuard, NotAuthGuard } from './_helpers';
 import { UnsubscribePageComponent } from './pages/unsubscribe-page/unsubscribe-page.component';
 import { ValidatePageComponent } from './pages/validate-page';
+import { ResetPageComponent } from './pages/reset-page/reset-page.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,11 @@ const routes: Routes = [
   {
     path: 'forgot',
     component: ForgotPageComponent,
+    canActivate: [NotAuthGuard]
+  },
+  {
+    path: 'reset/:token',
+    component: ResetPageComponent,
     canActivate: [NotAuthGuard]
   },
   {

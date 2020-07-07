@@ -42,6 +42,8 @@ import { RedditWidgetComponent } from './components/reddit-widget/reddit-widget.
 import { WidgetRowComponent } from './components/widget-row/widget-row.component';
 import { WidgetRedditRowComponent } from './components/widget-reddit-row/widget-reddit-row.component';
 import { DealsWidgetComponent } from './components/deals-widget/deals-widget.component';
+import { ResetPageComponent } from './pages/reset-page/reset-page.component';
+import { ResetFormComponent } from './components/reset-form/reset-form.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +82,8 @@ import { DealsWidgetComponent } from './components/deals-widget/deals-widget.com
     WidgetRowComponent,
     WidgetRedditRowComponent,
     DealsWidgetComponent,
+    ResetPageComponent,
+    ResetFormComponent,
   ],
   imports: [
     BrowserModule,

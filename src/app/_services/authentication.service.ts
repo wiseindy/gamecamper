@@ -17,6 +17,7 @@ export class AuthenticationService {
   private refreshUrl = `${this.userUrl}/refresh`;
   private loginUrl = `${this.userUrl}/login`;
   private forgotUrl = `${this.userUrl}/forgot`;
+  private resetUrl = `${this.userUrl}/reset`;
 
   constructor(
     protected http: HttpClient,
@@ -38,9 +39,7 @@ export class AuthenticationService {
     })
       .pipe(
         map(user => {
-          localStorage.setItem('theUser', JSON.stringify(user));
-          this.theUserSubject.next(user);
-          return user;
+          return this._loginUser(user);
         })
       );
   }
@@ -49,9 +48,7 @@ export class AuthenticationService {
     return this._httpPost(this.refreshUrl, '')
       .pipe(
         map(user => {
-          localStorage.setItem('theUser', JSON.stringify(user));
-          this.theUserSubject.next(user);
-          return user;
+          return this._loginUser(user);
         })
       );
   }
@@ -75,9 +72,7 @@ export class AuthenticationService {
     return this._httpPost(this.userUrl, newUser)
       .pipe(
         map(user => {
-          localStorage.setItem('theUser', JSON.stringify(user));
-          this.theUserSubject.next(user);
-          return user;
+          return this._loginUser(user);
         })
       );
   }
@@ -86,6 +81,20 @@ export class AuthenticationService {
     return this._httpPost(this.forgotUrl, {
       email,
     });
+  }
+
+  public reset(token: string, password: string) {
+    return this._httpPost(this.resetUrl, {
+      token,
+      password,
+    })
+      .pipe(
+        map(user => {
+          localStorage.setItem('theUser', JSON.stringify(user));
+          this.theUserSubject.next(user);
+          return user;
+        })
+      );
   }
 
   public update(user: UpdateUser) {
@@ -111,5 +120,11 @@ export class AuthenticationService {
 
   protected _httpDelete(url: string) {
     return this.http.delete<any>(url);
+  }
+
+  protected _loginUser(user) {
+    localStorage.setItem('theUser', JSON.stringify(user));
+    this.theUserSubject.next(user);
+    return user;
   }
 }

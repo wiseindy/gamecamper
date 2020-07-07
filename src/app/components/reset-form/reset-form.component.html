@@ -1,0 +1,29 @@
+<form clrForm [formGroup]="resetForm" (ngSubmit)="reset()">
+  <div class="card">
+    <div class="card-block">
+      <div class="card-title">
+        Reset your account password
+      </div>
+      <div class="card-text">
+        <div class="flex flex-column gc-credentials-wrapper">
+          <clr-input-container>
+            <input type="password" class="clr-col-md-12" clrInput formControlName="password"
+              placeholder="New password" />
+            <clr-control-error>Invalid password (6 characters min)</clr-control-error>
+          </clr-input-container>
+          <clr-input-container>
+            <input type="password" class="clr-col-md-12" clrInput formControlName="confirm"
+              placeholder="Confirm password" />
+            <clr-control-error>Both passwords must match</clr-control-error>
+          </clr-input-container>
+          
+        </div>
+      </div>
+    </div>
+    <div class="card-footer gc-update-button-wrapper">
+      <button [clrLoading]="resetBtnState" class="btn btn-primary btn-block">
+        Reset password
+      </button>
+    </div>
+  </div>
+</form>
