@@ -8,9 +8,10 @@
     </div>
     <span *ngIf="game.platform || game.type" class="flex flex-row align-items-center justify-content-between gc-full-width">
       <div class="gc-metadata text-ellipsis">
-        <span title="Type: {{game.type}}" *ngIf="game.type === 'DLC'">{{game.type}}</span>
-        <span title="Type: {{game.type}}" *ngIf="game.type !== 'DLC'">{{game.type}}</span>
-        <span class="px-1">•</span>
+        <span class="label label-orange" title="Type: {{game.type}}" *ngIf="game.type === 'DLC'">{{game.type}}</span>
+        <span title="Type: {{game.type}}" *ngIf="game.type !== 'DLC'">
+          {{game.type}}<span class="px-1">•</span>
+        </span>
         <span title="Platform: {{game.platform}}" class="gc-text-platform">{{game.platform}}</span>
       </div>
       <a class="flex flex-row gc-external-link" title="View on reddit.com" href="https://reddit.com{{game.reddit.link}}" target="_blank">

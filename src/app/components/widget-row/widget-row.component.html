@@ -6,16 +6,15 @@
     <div title="{{game.name}}" class="gc-title text-ellipsis">
       {{game.name}}
     </div>
-    <span class="flex flex-row align-items-center justify-content-between gc-full-width">
-      <div class="gc-metadata text-ellipsis">
-        <span title="Type: DLC" *ngIf="game.dlc">
-          DLC<span class="px-1">•</span>
+    <span class="flex flex-row align-items-center justify-content-between ">
+      <div class="flex flex-row align-items-center gc-metadata gc-full-width">
+        <span class="label label-orange" title="Type: DLC" *ngIf="game.dlc">
+          DLC
         </span>
-        <span title="Type: Bundle" *ngIf="game.bundle || game.package">
+        <span class="label label-blue" title="Type: Bundle" *ngIf="game.bundle || game.package">
           Bundle
-          <span class="px-1">•</span>
         </span>
-        <span title="Store: {{game.stores[0].store['name']}}" class="gc-text-platform">{{game.stores[0].store['name']}}</span>
+        <span title="Store: {{game.stores[0].store['name']}}" class="gc-text-platform text-ellipsis">{{game.stores[0].store['name']}}</span>
       </div>
       <div class="gc-price">
         <span *ngIf="game.lowestValue === 0" class="gc-free">FREE</span>
