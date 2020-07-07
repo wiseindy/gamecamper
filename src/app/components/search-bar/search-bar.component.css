@@ -36,7 +36,16 @@
 
 .price-text-number {
   width: 3rem;
-  color: hsl(143, 36%, 73%);
+  /* color: hsl(143, 36%, 73%); */
+  color: hsl(198, 69%, 69%);
+  font-weight: bold;
+  /* color: hsl(0, 0%, 0%); */
+  /* border-radius: 0.2rem; */
+}
+
+.price-text-free {
+  width: 3rem;
+  color: hsl(93, 76%, 49%);
   font-weight: bold;
   /* color: hsl(0, 0%, 0%); */
   /* border-radius: 0.2rem; */
