@@ -11,7 +11,7 @@ import { CacheService } from './cache.service';
 export class FreeGamesService {
 
   private url = `${environment.apiUrl}/games/free`;
-  private url0 = `${environment.apiUrl}/games/exclusive/0`;
+  private url0 = `${environment.apiUrl}/games/range/0`;
   private cacheRefreshTime = environment.cacheRefreshTime;
   private cache: Observable<Array<any>>[] = [];
   private cacheAll$: Observable<Array<any>>;

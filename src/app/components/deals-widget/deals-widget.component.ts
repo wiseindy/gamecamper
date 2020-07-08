@@ -35,7 +35,7 @@ export class DealsWidgetComponent implements OnInit {
     this.loading = true;
     this.error = false;
 
-    if (this.type === 'exclusive') {
+    if (this.type === 'range') {
       this.free0$.subscribe(
         data => {
           this.error = false;
