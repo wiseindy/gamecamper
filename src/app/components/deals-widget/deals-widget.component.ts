@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DealsService, FreeGamesService } from '@gamecamper/_services';
+import { shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-deals-widget',
@@ -15,17 +16,27 @@ export class DealsWidgetComponent implements OnInit {
   loading = false;
   error = false;
 
+  free$;
+  free0$;
+
   constructor(
     protected dealsService: DealsService,
     protected freeGamesService: FreeGamesService,
   ) { }
 
   ngOnInit(): void {
+    this.free$ = this.dealsService.find('ca', this.type).pipe(shareReplay(1));
+    this.free0$ = this.freeGamesService.find0('ca').pipe(shareReplay(1));
+
+    this._getData();
+  }
+
+  private _getData() {
     this.loading = true;
     this.error = false;
 
     if (this.type === 'exclusive') {
-      this.freeGamesService.find0('ca').subscribe(
+      this.free0$.subscribe(
         data => {
           this.error = false;
           this.loading = false;
@@ -36,7 +47,7 @@ export class DealsWidgetComponent implements OnInit {
           this.loading = false;
         });
     } else {
-      this.dealsService.find('ca', this.type).subscribe(
+      this.free$.subscribe(
         data => {
           this.error = false;
           this.loading = false;

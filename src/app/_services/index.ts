@@ -6,3 +6,4 @@ export * from './error.service';
 export * from './unsubscribe.service';
 export * from './validate.service';
 export * from './deals.service';
+export * from './cache.service';

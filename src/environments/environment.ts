@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  cacheRefreshTime: 120000, // 2 minutes
   apiUrl: 'http://localhost:3000'
 };
 
