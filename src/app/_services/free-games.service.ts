@@ -14,7 +14,6 @@ export class FreeGamesService {
   private url0 = `${environment.apiUrl}/games/range/0`;
   private cacheRefreshTime = environment.cacheRefreshTime;
   private cache: Observable<Array<any>>[] = [];
-  private cacheAll$: Observable<Array<any>>;
   private cache0$: Observable<Array<any>>;
 
   constructor(

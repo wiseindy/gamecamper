@@ -12,6 +12,7 @@ import { AuthGuard, NotAuthGuard } from './_helpers';
 import { UnsubscribePageComponent } from './pages/unsubscribe-page/unsubscribe-page.component';
 import { ValidatePageComponent } from './pages/validate-page';
 import { ResetPageComponent } from './pages/reset-page/reset-page.component';
+import { DealsPageComponent } from './pages/deals-page';
 
 
 const routes: Routes = [
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'free',
     component: FreeGamesPageComponent,
+  },
+  {
+    path: 'deals/:value',
+    component: DealsPageComponent,
   },
   {
     path: 'unsubscribe/:token',

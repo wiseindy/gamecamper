@@ -1,10 +1,7 @@
 <app-page-title titleText=""></app-page-title>
 
-<div class="gc-back-button">
-  <button (click)="goBack()" type="button" class="btn btn-icon" aria-label="back">
-    <fa-icon class="p-1" [icon]="faChevronLeft"></fa-icon>
-  </button>
-</div>
+<app-back-button></app-back-button>
+
 <app-page-spinner text="Fetching game details..." *ngIf="loading"></app-page-spinner>
 <app-game *ngIf="game" [game]="game"></app-game>
 

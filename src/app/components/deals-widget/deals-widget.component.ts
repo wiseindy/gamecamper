@@ -12,11 +12,16 @@ export class DealsWidgetComponent implements OnInit {
   @Input() header;
   @Input() headerText;
   @Input() type;
+  @Input() rangeValue = '0';
+
   games: string[];
   loading = false;
   error = false;
 
   free$;
+  free1$;
+  free5$;
+  free10$;
   free0$;
 
   constructor(
@@ -26,6 +31,10 @@ export class DealsWidgetComponent implements OnInit {
 
   ngOnInit(): void {
     this.free$ = this.dealsService.find('ca', this.type).pipe(shareReplay(1));
+    this.free1$ = this.dealsService.find1('ca').pipe(shareReplay(1));
+    this.free5$ = this.dealsService.find5('ca').pipe(shareReplay(1));
+    this.free10$ = this.dealsService.find10('ca').pipe(shareReplay(1));
+
     this.free0$ = this.freeGamesService.find0('ca').pipe(shareReplay(1));
 
     this._getData();
@@ -36,7 +45,25 @@ export class DealsWidgetComponent implements OnInit {
     this.error = false;
 
     if (this.type === 'range') {
-      this.free0$.subscribe(
+      let obs;
+      switch (this.rangeValue) {
+        case '0':
+          obs = this.free0$;
+          break;
+        case '1':
+          obs = this.free1$;
+          break;
+        case '5':
+          obs = this.free5$;
+          break;
+        case '10':
+          obs = this.free10$;
+          break;
+        default:
+          obs = this.free0$;
+          break;
+      }
+      obs.subscribe(
         data => {
           this.error = false;
           this.loading = false;

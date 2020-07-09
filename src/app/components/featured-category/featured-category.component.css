@@ -1,0 +1,82 @@
+.gc-category-wrapper {
+  border-radius: 0.5rem;
+  height: 5rem;
+  font-size: 0.8rem;
+  color: #ffffff;
+  font-weight: bold;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+fa-icon {
+  font-size: 1.5rem;
+}
+
+.gc-bg-1 {
+  background-image: linear-gradient(hsl(198, 65%, 57%), hsl(205, 100%, 34%));
+}
+
+.gc-bg-1:hover {
+  border: 2px solid hsl(198, 100%, 67%);
+}
+
+.gc-bg-1:active {
+  border: 4px solid hsl(205, 100%, 34%);
+  background-image: linear-gradient(hsl(205, 100%, 34%), hsl(205, 100%, 34%));
+}
+
+
+
+.gc-bg-2 {
+  background-image: linear-gradient(hsl(92, 79%, 40%), hsl(98, 100%, 21%));
+}
+
+.gc-bg-2:hover {
+  border: 2px solid hsl(92, 80%, 48%);
+}
+
+.gc-bg-2:active {
+  border: 4px solid hsl(98, 100%, 21%);
+  background-image: linear-gradient(hsl(98, 100%, 21%), hsl(98, 100%, 21%));
+}
+
+
+
+.gc-bg-3 {
+  background-image: linear-gradient(hsl(17, 100%, 39%), hsl(17, 100%, 29%));
+}
+
+.gc-bg-3:hover {
+  border: 2px solid hsl(17, 100%, 66%);
+}
+
+.gc-bg-3:active {
+  border: 4px solid hsl(17, 100%, 29%);
+  background-image: linear-gradient(hsl(17, 100%, 29%), hsl(17, 100%, 29%));
+}
+
+
+
+.gc-bg-4 {
+  background-image: linear-gradient(hsl(41, 100%, 39%), hsl(41, 100%, 29%));
+}
+
+.gc-bg-4:hover {
+  border: 2px solid hsl(41, 100%, 62%);
+}
+
+.gc-bg-4:active {
+  border: 4px solid hsl(41, 100%, 29%);
+  background-image: linear-gradient(hsl(41, 100%, 29%), hsl(41, 100%, 29%));
+}
+
+
+
+.gc-category {
+  width: 100%;
+  height: 100%;
+}
+
+.gc-category:hover, .gc-category:active {
+  background-color: hsla(0, 0%, 100%, 0.1);
+}
