@@ -8,13 +8,19 @@
     </p>
   </div>
   <ul class="list-group">
+    <li *ngFor="let game of games">
+      <app-widget-row [game]="game"></app-widget-row>
+    </li>
     <li *ngIf="loading" class="p-3">
       <span class="spinner spinner-sm spinner-inverse">
         Loading...
       </span>
     </li>
-    <li *ngFor="let game of games">
-      <app-widget-row [game]="game"></app-widget-row>
-    </li>
   </ul>
+  <div class="card-footer">
+    <button class="btn btn-sm btn-link" [disabled]="loading" (click)="loadMore()">
+      <span *ngIf="!loading">Load more</span>
+      <span *ngIf="loading">Please wait...</span>
+    </button>
+  </div>
 </div>

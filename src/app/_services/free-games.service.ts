@@ -14,7 +14,7 @@ export class FreeGamesService {
   private url0 = `${environment.apiUrl}/games/range/0`;
   private cacheRefreshTime = environment.cacheRefreshTime;
   private cache: Observable<Array<any>>[] = [];
-  private cache0$: Observable<Array<any>>;
+  private cache0: Observable<Array<any>>[] = [];
 
   constructor(
     protected readonly http: HttpClient,
@@ -45,11 +45,11 @@ export class FreeGamesService {
     }
     const newUrl = `${this.url0}/${regionId}/${page}`;
     try {
-      if (!this.cache0$) {
+      if (!this.cache0[`p${page}`]) {
         const obs = this._httpGet(newUrl);
-        this.cache0$ = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
+        this.cache0[`p${page}`] = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
       }
-      return this.cache0$;
+      return this.cache0[`p${page}`];
     } catch (error) {
       return of(null);
     }

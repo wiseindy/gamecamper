@@ -17,6 +17,7 @@ export class DealsWidgetComponent implements OnInit {
   games: string[];
   loading = false;
   error = false;
+  page = 1;
 
   free$;
   free1$;
@@ -30,17 +31,17 @@ export class DealsWidgetComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.free$ = this.dealsService.find('ca', this.type).pipe(shareReplay(1));
-    this.free1$ = this.dealsService.find1('ca').pipe(shareReplay(1));
-    this.free5$ = this.dealsService.find5('ca').pipe(shareReplay(1));
-    this.free10$ = this.dealsService.find10('ca').pipe(shareReplay(1));
-
-    this.free0$ = this.freeGamesService.find0('ca').pipe(shareReplay(1));
-
     this._getData();
   }
 
   private _getData() {
+    this.free$ = this.dealsService.find('ca', this.type).pipe(shareReplay(1));
+    this.free1$ = this.dealsService.find1('ca', this.page).pipe(shareReplay(1));
+    this.free5$ = this.dealsService.find5('ca', this.page).pipe(shareReplay(1));
+    this.free10$ = this.dealsService.find10('ca', this.page).pipe(shareReplay(1));
+
+    this.free0$ = this.freeGamesService.find0('ca', this.page).pipe(shareReplay(1));
+
     this.loading = true;
     this.error = false;
 
@@ -67,7 +68,11 @@ export class DealsWidgetComponent implements OnInit {
         data => {
           this.error = false;
           this.loading = false;
-          this.games = data;
+          if (this.page > 1) {
+            this.games.push(...data);
+          } else {
+            this.games = data;
+          }
         },
         error => {
           this.error = true;
@@ -85,6 +90,11 @@ export class DealsWidgetComponent implements OnInit {
           this.loading = false;
         });
     }
+  }
+
+  loadMore() {
+    this.page++;
+    this._getData();
   }
 
 }

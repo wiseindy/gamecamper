@@ -15,9 +15,9 @@ export class DealsService {
   private url5 = `${environment.apiUrl}/games/range/5`;
   private url10 = `${environment.apiUrl}/games/range/10`;
   private cache: Observable<Array<any>>[] = [];
-  private cache1$: Observable<Array<any>>;
-  private cache5$: Observable<Array<any>>;
-  private cache10$: Observable<Array<any>>;
+  private cache1: Observable<Array<any>>[] = [];
+  private cache5: Observable<Array<any>>[] = [];
+  private cache10: Observable<Array<any>>[] = [];
   private cacheRefreshTime = environment.cacheRefreshTime;
 
   constructor(
@@ -43,12 +43,12 @@ export class DealsService {
     }
     const newUrl = `${this.url1}/${regionId}/${page}`;
     try {
-      return this.http.get(newUrl)
-      // if (!this.cache1$) {
-      //   const obs = this._httpGet(newUrl);
-      //   this.cache1$ = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
-      // }
-      // return this.cache1$;
+      // return this.http.get(newUrl);
+      if (!this.cache1[`p${page}`]) {
+        const obs = this._httpGet(newUrl);
+        this.cache1[`p${page}`] = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
+      }
+      return this.cache1[`p${page}`];
     } catch (error) {
       return of(null);
     }
@@ -60,11 +60,11 @@ export class DealsService {
     }
     const newUrl = `${this.url5}/${regionId}/${page}`;
     try {
-      if (!this.cache5$) {
+      if (!this.cache5[`p${page}`]) {
         const obs = this._httpGet(newUrl);
-        this.cache5$ = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
+        this.cache5[`p${page}`] = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
       }
-      return this.cache5$;
+      return this.cache5[`p${page}`];
     } catch (error) {
       return of(null);
     }
@@ -76,11 +76,11 @@ export class DealsService {
     }
     const newUrl = `${this.url10}/${regionId}/${page}`;
     try {
-      if (!this.cache10$) {
+      if (!this.cache10[`p${page}`]) {
         const obs = this._httpGet(newUrl);
-        this.cache10$ = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
+        this.cache10[`p${page}`] = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
       }
-      return this.cache10$;
+      return this.cache10[`p${page}`];
     } catch (error) {
       return of(null);
     }
