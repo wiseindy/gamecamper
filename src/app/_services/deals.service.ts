@@ -43,11 +43,7 @@ export class DealsService {
     }
     const newUrl = `${this.url1}/${regionId}/${page}`;
     try {
-      console.log('woah');
-      console.log(newUrl);
-      return this.http.get(newUrl).pipe(
-        tap(x => console.log(x)),
-      );
+      return this.http.get(newUrl)
       // if (!this.cache1$) {
       //   const obs = this._httpGet(newUrl);
       //   this.cache1$ = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
