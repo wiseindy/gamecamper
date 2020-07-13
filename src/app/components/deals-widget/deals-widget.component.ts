@@ -13,6 +13,7 @@ export class DealsWidgetComponent implements OnInit {
   @Input() headerText;
   @Input() type;
   @Input() rangeValue = '0';
+  @Input() showLoadMore = false;
 
   games: string[];
   loading = false;

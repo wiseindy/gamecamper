@@ -13,6 +13,10 @@
     <a href="#" class="nav-link nav-text" routerLinkActive="nav-active" routerLink="/watchlist">My Watchlist</a>
   </div>
   <div class="header-actions">
+    
+    <app-region-select #wrapper></app-region-select>
+    <ng-content *ngTemplateOutlet='wrapper.dropdownTemplate'></ng-content>
+    
     <a *ngIf="!user" href="#" class="nav-link nav-text" routerLinkActive="nav-active" routerLink="/login">Login</a>
     <a *ngIf="!user" href="#" class="nav-link nav-text" routerLinkActive="nav-active"
       routerLink="/register">Register</a>

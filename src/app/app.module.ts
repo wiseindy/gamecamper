@@ -47,6 +47,7 @@ import { ResetFormComponent } from './components/reset-form/reset-form.component
 import { FeaturedCategoryComponent } from './components/featured-category/featured-category.component';
 import { DealsPageComponent } from './pages/deals-page/deals-page.component';
 import { BackButtonComponent } from './components/back-button/back-button.component';
+import { RegionSelectComponent } from './components/region-select/region-select.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { BackButtonComponent } from './components/back-button/back-button.compon
     FeaturedCategoryComponent,
     DealsPageComponent,
     BackButtonComponent,
+    RegionSelectComponent,
   ],
   imports: [
     BrowserModule,

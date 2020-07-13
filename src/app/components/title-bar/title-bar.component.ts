@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AuthenticationService } from '@gamecamper/_services';
 import { faSignOutAlt, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,12 +15,14 @@ export class TitleBarComponent implements OnInit {
 
   constructor(
     protected readonly authenticationService: AuthenticationService,
+    private cdref: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
     this.authenticationService.theUser.subscribe(user => {
       this.user = user;
     });
+    this.cdref.detectChanges();
   }
 
   public logout(): void {

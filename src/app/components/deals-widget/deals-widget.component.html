@@ -17,7 +17,7 @@
       </span>
     </li>
   </ul>
-  <div class="card-footer">
+  <div class="card-footer" *ngIf="showLoadMore">
     <button class="btn btn-sm btn-link" [disabled]="loading" (click)="loadMore()">
       <span *ngIf="!loading">Load more</span>
       <span *ngIf="loading">Please wait...</span>

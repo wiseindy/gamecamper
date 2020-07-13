@@ -1,0 +1,21 @@
+<ng-template #dropdownTemplate>
+  <clr-dropdown>
+    <button class="nav-text" clrDropdownTrigger aria-label="toggle settings menu">
+      <div class="flex flex-row align-items-center">
+        <div class="px-1 text-ellipsis">{{selected}}</div>
+        <clr-icon shape="caret down"></clr-icon>
+      </div>
+    </button>
+    <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+      <div clrDropdownItem *ngIf="loading">
+        <div class="flex flex-row justify-content-center align-items-center">
+          <div class="spinner spinner-sm spinner-inverse"></div>
+          <div class="ml-2">Loading...</div>
+        </div>
+      </div>
+      <ng-container *ngFor="let region of regions">
+        <div (click)="switchRegion(region)" clrDropdownItem>{{region}}</div>
+      </ng-container>
+    </clr-dropdown-menu>
+  </clr-dropdown>
+</ng-template>
