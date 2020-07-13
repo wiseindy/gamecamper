@@ -8,7 +8,7 @@ import { of, Observable, BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class GeoService {
-  defaultRegion = 'us';
+  private defaultRegion = 'us';
   private theGeoSubject: BehaviorSubject<any>;
   public theGeo: Observable<any>;
 

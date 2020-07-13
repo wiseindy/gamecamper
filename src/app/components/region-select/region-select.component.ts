@@ -10,7 +10,7 @@ export class RegionSelectComponent implements OnInit {
 
   @ViewChild('dropdownTemplate') dropdownTemplate: TemplateRef<any>;
 
-  allRegions;
+  allRegions = [];
   regions;
   selected;
   loading = false;
@@ -20,34 +20,7 @@ export class RegionSelectComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const defaultRegion = this.geoService.defaultRegion;
-    this.regions = [defaultRegion];
-    this.allRegions = [defaultRegion];
-    this.selected = defaultRegion;
-    this.geoService.theGeo.subscribe(geo => {
-      if (!geo) {
-        geo = {
-          region: defaultRegion
-        };
-      } else if (!geo.region) {
-        geo = {
-          region: defaultRegion
-        };
-      }
-      this.switchRegion(geo.region.toUpperCase());
-    });
-
-    this.loading = true;
-    this.geoService.get().subscribe(
-      data => {
-        this.allRegions = data;
-        this.regions = this._filter(this.allRegions, this.selected);
-        this.loading = false;
-      },
-      error => {
-        this.loading = false;
-      }
-    );
+    this.getRegion();
   }
 
   switchRegion(region) {
@@ -55,11 +28,42 @@ export class RegionSelectComponent implements OnInit {
     this.regions = this._filter(this.allRegions, this.selected);
   }
 
+  private getRegion() {
+    this.geoService.theGeo.subscribe(geo => {
+      if (geo) {
+        if (geo.region) {
+          this.switchRegion(geo.region.toUpperCase());
+          this.getAllRegions();
+        }
+      }
+    });
+  }
+
+  private getAllRegions() {
+    this.loading = true;
+    this.geoService.get().subscribe(
+      data => {
+        if (data) {
+          this.allRegions = data;
+          this.regions = this._filter(this.allRegions, this.selected);
+          this.loading = false;
+        }
+      },
+      error => {
+        this.loading = false;
+      }
+    );
+  }
+
   private _filter(filterList, element) {
-    const list = [...filterList];
-    const match = list.indexOf(element);
-    list.splice(match, 1);
-    return list;
+    if (filterList.length > 0) {
+      const list = [...filterList];
+      const match = list.indexOf(element);
+      list.splice(match, 1);
+      return list;
+    } else {
+      return filterList;
+    }
   }
 
 }
