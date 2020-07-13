@@ -10,9 +10,9 @@ export class RegionSelectComponent implements OnInit {
 
   @ViewChild('dropdownTemplate') dropdownTemplate: TemplateRef<any>;
 
-  allRegions = ['US'];
-  regions = ['US'];
-  selected = 'US';
+  allRegions;
+  regions;
+  selected;
   loading = false;
 
   constructor(
@@ -20,14 +20,18 @@ export class RegionSelectComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const defaultRegion = this.geoService.defaultRegion;
+    this.regions = [defaultRegion];
+    this.allRegions = [defaultRegion];
+    this.selected = defaultRegion;
     this.geoService.theGeo.subscribe(geo => {
       if (!geo) {
         geo = {
-          region: this.geoService.defaultRegion
+          region: defaultRegion
         };
       } else if (!geo.region) {
         geo = {
-          region: this.geoService.defaultRegion
+          region: defaultRegion
         };
       }
       this.switchRegion(geo.region.toUpperCase());
