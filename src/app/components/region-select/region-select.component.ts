@@ -21,7 +21,15 @@ export class RegionSelectComponent implements OnInit {
 
   ngOnInit(): void {
     this.geoService.theGeo.subscribe(geo => {
-      console.log('region-select-component | got region:', geo);
+      if (!geo) {
+        geo = {
+          region: this.geoService.defaultRegion
+        };
+      } else if (!geo.region) {
+        geo = {
+          region: this.geoService.defaultRegion
+        };
+      }
       this.switchRegion(geo.region.toUpperCase());
     });
 

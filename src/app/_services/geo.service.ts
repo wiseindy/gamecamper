@@ -4,12 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { of, Observable, BehaviorSubject } from 'rxjs';
 
-const DEFAULT_REGION = 'ca';
-
 @Injectable({
   providedIn: 'root'
 })
 export class GeoService {
+  defaultRegion = 'us';
   private theGeoSubject: BehaviorSubject<any>;
   public theGeo: Observable<any>;
 
@@ -36,7 +35,7 @@ export class GeoService {
     return this.http.get(this.urlDetect).pipe(
       catchError(error => {
         return of({
-          region: DEFAULT_REGION
+          region: this.defaultRegion
         });
       })
     );
@@ -45,7 +44,7 @@ export class GeoService {
   public get(): Observable<any> {
     return this.http.get(this.urlGet).pipe(
       catchError(error => {
-        return of([DEFAULT_REGION.toUpperCase()]);
+        return of([this.defaultRegion.toUpperCase()]);
       })
     );
   }
