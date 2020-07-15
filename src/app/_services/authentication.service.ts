@@ -33,22 +33,22 @@ export class AuthenticationService {
   }
 
   public login(email: string, password: string) {
-    return this._httpPost(this.loginUrl, {
+    return this.httpPost(this.loginUrl, {
       email,
       password,
     })
       .pipe(
         map(user => {
-          return this._loginUser(user);
+          return this.loginUser(user);
         })
       );
   }
 
   public refresh() {
-    return this._httpPost(this.refreshUrl, '')
+    return this.httpPost(this.refreshUrl, '')
       .pipe(
         map(user => {
-          return this._loginUser(user);
+          return this.loginUser(user);
         })
       );
   }
@@ -59,7 +59,7 @@ export class AuthenticationService {
   }
 
   public delete() {
-    return this._httpDelete(this.userUrl)
+    return this.httpDelete(this.userUrl)
       .pipe(
         map(() => {
           this.logout();
@@ -69,22 +69,22 @@ export class AuthenticationService {
   }
 
   public register(newUser: NewUser) {
-    return this._httpPost(this.userUrl, newUser)
+    return this.httpPost(this.userUrl, newUser)
       .pipe(
         map(user => {
-          return this._loginUser(user);
+          return this.loginUser(user);
         })
       );
   }
 
   public forgot(email: string) {
-    return this._httpPost(this.forgotUrl, {
+    return this.httpPost(this.forgotUrl, {
       email,
     });
   }
 
   public reset(token: string, password: string) {
-    return this._httpPost(this.resetUrl, {
+    return this.httpPost(this.resetUrl, {
       token,
       password,
     })
@@ -98,7 +98,7 @@ export class AuthenticationService {
   }
 
   public update(user: UpdateUser) {
-    return this._httpPut(this.userUrl, user)
+    return this.httpPut(this.userUrl, user)
       .pipe(
         map(updatedUser => {
           if (updatedUser.token) {
@@ -110,19 +110,19 @@ export class AuthenticationService {
       );
   }
 
-  protected _httpPost(url: string, body: any) {
+  protected httpPost(url: string, body: any) {
     return this.http.post<any>(url, body);
   }
 
-  protected _httpPut(url: string, body: any) {
+  protected httpPut(url: string, body: any) {
     return this.http.put<any>(url, body);
   }
 
-  protected _httpDelete(url: string) {
+  protected httpDelete(url: string) {
     return this.http.delete<any>(url);
   }
 
-  protected _loginUser(user) {
+  protected loginUser(user) {
     localStorage.setItem('theUser', JSON.stringify(user));
     this.theUserSubject.next(user);
     return user;

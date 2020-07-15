@@ -2,7 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ClrLoadingState } from '@clr/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NewWatchlist } from '@gamecamper/_models';
-import { WatchlistService } from '@gamecamper/_services';
+import { WatchlistService, GeoService } from '@gamecamper/_services';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-game-form',
@@ -19,7 +20,8 @@ export class GameFormComponent implements OnInit {
 
   constructor(
     protected readonly watchlistService: WatchlistService,
-    protected readonly formBuilder: FormBuilder
+    protected readonly formBuilder: FormBuilder,
+    protected readonly geoService: GeoService,
   ) { }
 
   ngOnInit(): void {
@@ -42,7 +44,7 @@ export class GameFormComponent implements OnInit {
 
     const watchlist: NewWatchlist = {
       gameId: this.game.id,
-      regionId: 'ca',
+      regionId: this.geoService.theGeoValue.region,
       watchPrice: parseFloat(this.watchlistForm.controls.watchPrice.value)
     };
 

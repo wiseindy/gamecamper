@@ -46,6 +46,7 @@ a.gc-row:active {
 .gc-price {
   color: hsl(198, 69%, 69%);
   font-weight: bold;
+  flex: 1 0 auto;
 }
 
 .gc-game-image-wrapper {

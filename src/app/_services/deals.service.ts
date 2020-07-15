@@ -27,11 +27,12 @@ export class DealsService {
 
   public find(regionId: string, type: string): Observable<any> {
     try {
-      if (!this.cache[type]) {
-        const obs = this._httpGet(`${this.url}/${regionId}/${type}`);
-        this.cache[type] = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
+      const key = `${regionId}_${type}`;
+      if (!this.cache[key]) {
+        const obs = this.httpGet(`${this.url}/${regionId}/${type}`);
+        this.cache[key] = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
       }
-      return this.cache[type];
+      return this.cache[key];
     } catch (error) {
       return of(null);
     }
@@ -44,11 +45,12 @@ export class DealsService {
     const newUrl = `${this.url1}/${regionId}/${page}`;
     try {
       // return this.http.get(newUrl);
-      if (!this.cache1[`p${page}`]) {
-        const obs = this._httpGet(newUrl);
-        this.cache1[`p${page}`] = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
+      const key = `${regionId}_p${page}`;
+      if (!this.cache1[key]) {
+        const obs = this.httpGet(newUrl);
+        this.cache1[key] = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
       }
-      return this.cache1[`p${page}`];
+      return this.cache1[key];
     } catch (error) {
       return of(null);
     }
@@ -60,11 +62,12 @@ export class DealsService {
     }
     const newUrl = `${this.url5}/${regionId}/${page}`;
     try {
-      if (!this.cache5[`p${page}`]) {
-        const obs = this._httpGet(newUrl);
-        this.cache5[`p${page}`] = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
+      const key = `${regionId}_p${page}`;
+      if (!this.cache5[key]) {
+        const obs = this.httpGet(newUrl);
+        this.cache5[key] = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
       }
-      return this.cache5[`p${page}`];
+      return this.cache5[key];
     } catch (error) {
       return of(null);
     }
@@ -76,17 +79,18 @@ export class DealsService {
     }
     const newUrl = `${this.url10}/${regionId}/${page}`;
     try {
-      if (!this.cache10[`p${page}`]) {
-        const obs = this._httpGet(newUrl);
-        this.cache10[`p${page}`] = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
+      const key = `${regionId}_p${page}`;
+      if (!this.cache10[key]) {
+        const obs = this.httpGet(newUrl);
+        this.cache10[key] = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
       }
-      return this.cache10[`p${page}`];
+      return this.cache10[key];
     } catch (error) {
       return of(null);
     }
   }
 
-  protected _httpGet(url: string) {
+  protected httpGet(url: string) {
     // return this.http.get(`${url}`);
     return this.http.get(url).pipe(
       catchError(error => {

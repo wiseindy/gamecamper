@@ -23,7 +23,7 @@ export class GameService {
       switchMap(game => {
         if (game.length > 2) {
           try {
-            return this._httpGet(`${this.games}/${regionId}/${game}`).pipe(
+            return this.httpGet(`${this.games}/${regionId}/${game}`).pipe(
               catchError(error => {
                 if (error === 'Unknown Error') {
                   return of(-1);
@@ -44,10 +44,10 @@ export class GameService {
   }
 
   public findOne(regionId: string, gameId: string): Observable<any> {
-    return this._httpGet(`${this.game}/${regionId}/${gameId}`);
+    return this.httpGet(`${this.game}/${regionId}/${gameId}`);
   }
 
-  protected _httpGet(url: string) {
+  protected httpGet(url: string) {
     return this.http.get(`${url}`);
   }
 }

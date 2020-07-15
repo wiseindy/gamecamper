@@ -22,9 +22,11 @@ export class GeoService {
       JSON.parse(localStorage.getItem('theGeo'))
     );
     this.theGeo = this.theGeoSubject.asObservable();
-    this.detect().subscribe(x => {
-      this._setGeo(x);
-    });
+    if (!this.theGeoValue) {
+      this.detect().subscribe(x => {
+        this.setGeo(x);
+      });
+    }
   }
 
   public get theGeoValue() {
@@ -41,15 +43,19 @@ export class GeoService {
     );
   }
 
+  public switchRegion(region) {
+    this.setGeo(region);
+  }
+
   public get(): Observable<any> {
     return this.http.get(this.urlGet).pipe(
       catchError(error => {
-        return of([this.defaultRegion.toUpperCase()]);
+        return of([this.defaultRegion]);
       })
     );
   }
 
-  private _setGeo(geo) {
+  private setGeo(geo) {
     localStorage.setItem('theGeo', JSON.stringify(geo));
     this.theGeoSubject.next(geo);
     return geo;

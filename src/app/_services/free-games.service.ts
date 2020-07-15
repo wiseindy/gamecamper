@@ -30,7 +30,7 @@ export class FreeGamesService {
     }
     try {
       if (!this.cache[type]) {
-        const obs = this._httpGet(newUrl);
+        const obs = this.httpGet(newUrl);
         this.cache[type] = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
       }
       return this.cache[type];
@@ -46,7 +46,7 @@ export class FreeGamesService {
     const newUrl = `${this.url0}/${regionId}/${page}`;
     try {
       if (!this.cache0[`p${page}`]) {
-        const obs = this._httpGet(newUrl);
+        const obs = this.httpGet(newUrl);
         this.cache0[`p${page}`] = this.cacheService.renewAfterTimer(obs, this.cacheRefreshTime);
       }
       return this.cache0[`p${page}`];
@@ -55,7 +55,7 @@ export class FreeGamesService {
     }
   }
 
-  protected _httpGet(url: string) {
+  protected httpGet(url: string) {
     // return this.http.get(`${url}`);
     return this.http.get(url).pipe(
       catchError(error => {

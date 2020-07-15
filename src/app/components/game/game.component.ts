@@ -4,6 +4,7 @@ import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { first } from 'rxjs/operators';
 import { ClrLoadingState } from '@clr/angular';
 import { environment } from '@environments/environment';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-game',
@@ -19,7 +20,9 @@ export class GameComponent implements OnInit {
   user;
   faExternalLinkAlt = faExternalLinkAlt;
   watchlistModal = false;
-  watchlistBtnState: ClrLoadingState = ClrLoadingState.LOADING;
+  watchlistBtnState: ClrLoadingState;
+  watchlistBtnDisabled: boolean;
+  watchlistSubscription: Subscription;
 
   constructor(
     protected readonly watchlistService: WatchlistService,
@@ -29,6 +32,9 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.watchlistBtnState = ClrLoadingState.LOADING;
+    this.watchlistBtnDisabled = true;
 
     this.authenticationService.theUser.subscribe(user => {
       this.user = user;
@@ -42,27 +48,39 @@ export class GameComponent implements OnInit {
     }
 
     if (this.user) {
-      this.watchlistService.get()
-        .pipe(
-          first()
-        )
-        .subscribe(
-          watchlist => {
-            this._checkWatchlistStatus(watchlist);
-            this.watchlistBtnState = ClrLoadingState.DEFAULT;
-          },
-          error => {
-            this.watchlistBtnState = ClrLoadingState.DEFAULT;
-          }
-        );
-
-      this.watchlistService.theWatchlist.subscribe(watchlist => {
-        this._checkWatchlistStatus(watchlist);
-      });
+      this.subscribeToWatchlist();
     }
   }
 
-  private _checkWatchlistStatus(watchlist) {
+  reload() {
+    this.watchlistModal = false;
+    if (this.watchlistSubscription) {
+      this.watchlistSubscription.unsubscribe();
+    }
+    this.subscribeToWatchlist();
+  }
+
+  private subscribeToWatchlist() {
+    this.watchlistBtnState = ClrLoadingState.LOADING;
+    this.watchlistBtnDisabled = true;
+    this.watchlistService.get()
+      .pipe(
+        first()
+      )
+      .subscribe(
+        watchlist => {
+          this.checkWatchlistStatus(watchlist);
+          this.watchlistBtnState = ClrLoadingState.DEFAULT;
+          this.watchlistBtnDisabled = false;
+        },
+        error => {
+          this.watchlistBtnState = ClrLoadingState.DEFAULT;
+          this.watchlistBtnDisabled = false;
+        }
+      );
+  }
+
+  private checkWatchlistStatus(watchlist) {
     for (const game of watchlist) {
       if (game.gameId === this.game.id) {
         this.hasWatchlist = true;

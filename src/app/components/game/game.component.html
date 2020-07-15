@@ -32,11 +32,11 @@
               </div>
               <div class="clr-col-sm-6 p-0 m-0">
                 <ng-container *ngIf="user">
-                  <button *ngIf="!hasWatchlist" class="btn btn-success-outline" (click)="watchlistModal = true"
+                  <button *ngIf="!hasWatchlist" class="btn btn-success-outline" [disabled]="watchlistBtnDisabled" (click)="watchlistModal = true"
                     [clrLoading]="watchlistBtnState">
                     Add to Watchlist
                   </button>
-                  <button *ngIf="hasWatchlist" class="btn btn-success-outline" [clrLoading]="watchlistBtnState"
+                  <button *ngIf="hasWatchlist" class="btn btn-success-outline" [disabled]="watchlistBtnDisabled" [clrLoading]="watchlistBtnState"
                     routerLink="/watchlist" fragment="{{game.id}}">
                     View in Watchlist
                   </button>
@@ -96,7 +96,7 @@
     <p class="my-1">
       Set a <strong>price drop alert</strong> and get notified whenever the game drops to this price.
     </p>
-    <app-game-form [game]="game" (done)="watchlistModal = false"></app-game-form>
+    <app-game-form [game]="game" (done)="reload()"></app-game-form>
   </div>
 </clr-modal>
 

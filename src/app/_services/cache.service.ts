@@ -13,19 +13,19 @@ export class CacheService {
   constructor() { }
 
   public renewAfterTimer(obs: Observable<any>, time: number, bufferReplays: number = 1) {
-    return this._createReturnObs(obs, time, bufferReplays).pipe(
+    return this.createReturnObs(obs, time, bufferReplays).pipe(
       first(null, defer(
         () => {
           obs = this.renewAfterTimer(obs, this.cacheRefreshTime);
           return obs;
-          // return this._createReturnObs(obs, time, bufferReplays)
+          // return this.createReturnObs(obs, time, bufferReplays)
         })
       ),
       mergeMap(d => (isObservable(d) ? d : of(d))),
     );
   }
 
-  protected _createReturnObs(obs: Observable<any>, time: number, bufferReplays: number) {
+  protected createReturnObs(obs: Observable<any>, time: number, bufferReplays: number) {
     return obs.pipe(
       shareReplay(bufferReplays, time)
     );

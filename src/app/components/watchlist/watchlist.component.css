@@ -60,6 +60,12 @@
 .gc-text {
   font-size: 1rem;
   color: hsl(0, 0%, 100%);
+  white-space: nowrap;
+}
+
+.gc-region-label {
+  border: none;
+  background: hsla(0, 0%, 0%, 0.5);
 }
 
 .gc-text-difference {

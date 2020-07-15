@@ -23,16 +23,20 @@ export class RegionSelectComponent implements OnInit {
     this.getRegion();
   }
 
-  switchRegion(region) {
+  changeRegion(region) {
+    this.geoService.switchRegion({
+      region
+    });
     this.selected = region;
-    this.regions = this._filter(this.allRegions, this.selected);
+    this.regions = this.filter(this.allRegions, this.selected);
   }
 
   private getRegion() {
     this.geoService.theGeo.subscribe(geo => {
       if (geo) {
         if (geo.region) {
-          this.switchRegion(geo.region.toUpperCase());
+          this.selected = geo.region;
+          this.regions = this.filter(this.allRegions, this.selected);
           this.getAllRegions();
         }
       }
@@ -45,7 +49,7 @@ export class RegionSelectComponent implements OnInit {
       data => {
         if (data) {
           this.allRegions = data;
-          this.regions = this._filter(this.allRegions, this.selected);
+          this.regions = this.filter(this.allRegions, this.selected);
           this.loading = false;
         }
       },
@@ -55,7 +59,7 @@ export class RegionSelectComponent implements OnInit {
     );
   }
 
-  private _filter(filterList, element) {
+  private filter(filterList, element) {
     if (filterList.length > 0) {
       const list = [...filterList];
       const match = list.indexOf(element);

@@ -14,10 +14,10 @@ export class WidgetRedditRowComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.game.title = this._decodeHTML(this.game.title);
+    this.game.title = this.decodeHTML(this.game.title);
   }
 
-  private _decodeHTML(str: string) {
+  decodeHTML(str: string) {
     const parser = new DOMParser();
     const dom = parser.parseFromString(
       '<!doctype html><body>' + str,

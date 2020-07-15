@@ -21,6 +21,7 @@
         <div class="clr-row my-lg-0 my-3">
           <div class="clr-col-12">
             <div class="flex flex-row">
+              <span class="label gc-region-label" title="Region: {{watchlistItem.regionId.toUpperCase()}}">{{watchlistItem.regionId.toUpperCase()}}</span>
               <a href="#" routerLink="/game/{{watchlistItem.gameId}}" class="text-ellipsis pr-2">
                 <h5 title="{{watchlistItem.name}}" class="text-ellipsis">
                   {{watchlistItem.name}}
@@ -37,14 +38,14 @@
         <div class="clr-row">
 
           <!-- Watch Price Block -->
-          <div class="clr-col-lg-6 clr-col-12 my-lg-0 mb-4">
+          <div class="clr-col-lg-5 clr-col-12 my-lg-0 mb-4">
             <div>WATCH PRICE</div>
             <app-watchlist-form [watchlistItem]="watchlistItem"></app-watchlist-form>
           </div>
           <!-- End Watch Price Block -->
 
           <!-- Buy Now Block -->
-          <div class="clr-col-lg-6 clr-col-12">
+          <div class="clr-col-lg-7 clr-col-12">
 
             <div class="clr-row align-items-center m-0 p-0">
 

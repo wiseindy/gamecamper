@@ -27,8 +27,8 @@ export class RegisterFormComponent implements OnInit {
     protected readonly route: ActivatedRoute,
     protected readonly router: Router,
   ) {
-    this.a = this._gen();
-    this.b = this._gen();
+    this.a = this.gen();
+    this.b = this.gen();
   }
 
   ngOnInit(): void {
@@ -82,13 +82,13 @@ export class RegisterFormComponent implements OnInit {
         },
         error => {
           this.registerBtnState = ClrLoadingState.ERROR;
-          this.a = this._gen();
-          this.b = this._gen();
+          this.a = this.gen();
+          this.b = this.gen();
         }
       );
   }
 
-  private _gen() {
+  private gen() {
     return Math.floor(Math.random() * 10);
   }
 
