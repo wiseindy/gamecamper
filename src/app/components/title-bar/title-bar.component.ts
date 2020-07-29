@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AuthenticationService } from '@gamecamper/_services';
-import { faSignOutAlt, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-title-bar',
@@ -28,5 +28,6 @@ export class TitleBarComponent implements OnInit {
   public logout(): void {
     this.authenticationService.logout();
   }
+
 
 }

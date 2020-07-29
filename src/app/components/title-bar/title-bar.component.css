@@ -35,6 +35,6 @@ a.nav-link:hover {
   padding: .15rem 1.2rem;
 }
 
-.gc-logout {
+.gc-logout span, .gc-logout fa-icon {
   color: var(--clr-btn-danger-bg-color);
 }

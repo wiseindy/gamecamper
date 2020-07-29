@@ -1,26 +1,46 @@
 <clr-header class="header-1">
+
   <div class="branding">
     <a href="#" routerlink="" class="logo-and-title">
       <span class="clr-icon gc-logo"></span>
       <span class="title">Gamecamper</span>
     </a>
   </div>
+
   <div class="divider"></div>
+
   <div class="header-nav" [clr-nav-level]="1">
     <a href="#" class="nav-link nav-text" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"
       routerLink="">Home</a>
-    <a href="#" class="nav-link nav-text" routerLinkActive="nav-active" routerLink="/free">Free Games</a>
+    <!-- <a href="#" class="nav-link nav-text" routerLinkActive="nav-active" routerLink="/free">Free Games</a> -->
     <a href="#" class="nav-link nav-text" routerLinkActive="nav-active" routerLink="/watchlist">My Watchlist</a>
-  </div>
-  <div class="header-actions">
-    
-    <app-region-select #wrapper></app-region-select>
-    <ng-content *ngTemplateOutlet='wrapper.dropdownTemplate'></ng-content>
-    
-    <a *ngIf="!user" href="#" class="nav-link nav-text" routerLinkActive="nav-active" routerLink="/login">Login</a>
-    <a *ngIf="!user" href="#" class="nav-link nav-text" routerLinkActive="nav-active"
+
+    <a *ngIf="!user" href="#" class="nav-link nav-text clr-hidden-md-up" routerLinkActive="nav-active"
+      routerLink="/login">Login</a>
+    <a *ngIf="!user" href="#" class="nav-link nav-text clr-hidden-md-up" routerLinkActive="nav-active"
       routerLink="/register">Register</a>
-    <clr-dropdown *ngIf="user">
+
+    <a *ngIf="user" href="#" class="nav-link nav-text clr-hidden-md-up" routerLinkActive="nav-active"
+      routerLink="/account">My Account: {{user.name}}</a>
+
+    <a *ngIf="user" href="#" class="gc-logout nav-link nav-text clr-hidden-md-up" (click)="logout()" routerLinkActive="nav-active">
+      <fa-icon [icon]="faSignOutAlt"></fa-icon>&nbsp;
+      <span>Log out</span>
+    </a>
+  </div>
+  
+  <div class="header-actions">
+
+    <app-region-select #regionWrapper></app-region-select>
+    <ng-content *ngTemplateOutlet='regionWrapper.dropdownTemplate'></ng-content>
+
+    <div class="clr-hidden-sm-down">
+      <a *ngIf="!user" href="#" class="nav-link nav-text" routerLinkActive="nav-active" routerLink="/login">Login</a>
+      <a *ngIf="!user" href="#" class="nav-link nav-text" routerLinkActive="nav-active"
+        routerLink="/register">Register</a>
+    </div>
+
+    <clr-dropdown *ngIf="user" class="clr-hidden-sm-down">
       <button class="nav-text" title="{{user.name}}" clrDropdownTrigger aria-label="open user profile">
         <div class="flex flex-row align-items-center">
           <fa-icon [icon]="faUserCircle"></fa-icon>
@@ -36,11 +56,12 @@
           My Account
         </a>
         <a href="#" class="gc-logout" (click)="logout()" clrDropdownItem>
-          <fa-icon [icon]="faSignOutAlt"></fa-icon>
-          Log out
+          <fa-icon [icon]="faSignOutAlt"></fa-icon>&nbsp;
+          <span>Log out</span>
         </a>
       </clr-dropdown-menu>
     </clr-dropdown>
+
   </div>
 </clr-header>
 
