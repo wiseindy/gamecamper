@@ -3,7 +3,7 @@
     <button class="nav-text" clrDropdownTrigger aria-label="toggle settings menu">
       <div class="flex flex-row align-items-center">
         <div class="px-1 text-ellipsis text-uppercase">
-          {{selected}}
+          {{selected.id}}
         </div>
         <clr-icon shape="caret down"></clr-icon>
       </div>
@@ -16,7 +16,7 @@
         </div>
       </div>
       <ng-container *ngFor="let region of regions">
-        <div class="text-uppercase" (click)="changeRegion(region)" clrDropdownItem>{{region}}</div>
+        <div class="text-uppercase" (click)="changeRegion(region)" clrDropdownItem>{{region.id}}</div>
       </ng-container>
     </clr-dropdown-menu>
   </clr-dropdown>

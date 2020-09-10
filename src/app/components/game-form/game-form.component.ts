@@ -44,7 +44,7 @@ export class GameFormComponent implements OnInit {
 
     const watchlist: NewWatchlist = {
       gameId: this.game.id,
-      regionId: this.geoService.theGeoValue.region,
+      regionId: this.geoService.theGeoValue.region.id,
       watchPrice: parseFloat(this.watchlistForm.controls.watchPrice.value)
     };
 

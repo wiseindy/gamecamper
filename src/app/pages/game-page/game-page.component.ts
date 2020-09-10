@@ -29,7 +29,7 @@ export class GamePageComponent implements OnInit {
     this.geoService.theGeo.subscribe(geo => {
       if (geo) {
         if (geo.region) {
-          this.regionId = geo.region;
+          this.regionId = geo.region.id;
           this.getData();
         }
       }

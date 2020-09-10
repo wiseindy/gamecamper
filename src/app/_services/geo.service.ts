@@ -8,7 +8,20 @@ import { of, Observable, BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class GeoService {
-  private defaultRegion = 'us';
+  private defaultRegion = {
+    currency_code: 'USD',
+    currency_name: 'United States Dollar',
+    currency_separator: '.',
+    currency_symbol: '$',
+    currency_symbol_position: 'left',
+    id: 'us',
+    name: 'United States',
+    buckets: {
+      1: 1,
+      5: 5,
+      10: 10,
+    },
+  };
   private theGeoSubject: BehaviorSubject<any>;
   public theGeo: Observable<any>;
 

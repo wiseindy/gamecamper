@@ -61,9 +61,12 @@ export class RegionSelectComponent implements OnInit {
 
   private filter(filterList, element) {
     if (filterList.length > 0) {
-      const list = [...filterList];
-      const match = list.indexOf(element);
-      list.splice(match, 1);
+      const list = filterList.filter(x => {
+        if (x.id === element.id) {
+          return false;
+        }
+        return true;
+      });
       return list;
     } else {
       return filterList;
